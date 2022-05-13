@@ -1,0 +1,93 @@
+/*
+ *
+ *   Copyright (c) 2022 Foxxite | Articca
+ *   All rights reserved.
+ *
+ * @format
+ */
+
+@import "./colors.scss";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: $primary transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	max-width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: $primary;
+	border-radius: 0px;
+	border: 0px solid #ffffff;
+}
+
+body {
+	margin: 0;
+	font-family: "Nunito", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	scroll-behavior: smooth;
+
+	background-color: $background;
+	color: $text;
+
+	font-size: 18px;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+button {
+	cursor: pointer;
+
+	border: none;
+
+	background-color: $paper;
+	color: $text;
+
+	box-shadow: $shadow;
+
+	padding: 0.5em;
+	margin: 0.2em 0.2em 0;
+
+	font-size: 1em;
+
+	font-weight: bold;
+
+	&:hover,
+	&:focus {
+		cursor: pointer;
+
+		background-color: lighten($color: $paper, $amount: 10%);
+
+		transition: all 0.2s;
+	}
+
+	&.active {
+		background-color: lighten($color: $paper, $amount: 15%);
+	}
+}
+
+// Fix so that language buttons work
+.twa {
+	pointer-events: none;
+}

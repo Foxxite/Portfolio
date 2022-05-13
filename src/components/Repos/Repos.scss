@@ -6,13 +6,20 @@
  * @format
  */
 
+@import "../../scss/colors.scss";
+@import "../../scss/breakpoints.scss";
+
 .repo-container {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr;
 	gap: 1rem;
 
-	@media (max-width: 768px) {
-		grid-template-columns: 1fr;
+	@include lg {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	@include xl {
+		grid-template-columns: 1fr 1fr 1fr;
 	}
 
 	padding: 1rem;
@@ -26,29 +33,44 @@
 
 		padding: 10px;
 
-		background-color: #fafafa;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		box-shadow: 0 0 5px #ccc;
+		background-color: $paper;
+		box-shadow: $shadow;
 
 		display: flex;
 		flex-direction: column;
 
-		.repo-item-title {
-			font-size: 1.5rem;
-			font-weight: bold;
-			color: #000;
+		.repo-item-info {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: baseline;
 
-			&:hover {
-				cursor: pointer;
+			margin-bottom: 1em;
 
-				text-decoration: underline;
+			.repo-item-title {
+				font-size: 1.5rem;
+				font-weight: bold;
+
+				color: $primary;
+				text-shadow: $shadow;
+
+				text-decoration: none;
+
+				&:hover {
+					cursor: pointer;
+
+					text-decoration: underline;
+				}
+			}
+
+			.repo-item-language {
+				color: $secondary;
+				text-shadow: $shadow;
 			}
 		}
 
-		.repo-item-language {
-			margin-top: 10px;
-			margin-bottom: 10px;
+		.repo-item-description {
+			margin-bottom: 0.8em;
 		}
 
 		.repo-item-stats {
@@ -60,7 +82,6 @@
 
 			.repo-item-stats-item {
 				font-size: 0.8rem;
-				color: #000;
 
 				.repo-item-stats-item-label {
 					font-weight: bold;

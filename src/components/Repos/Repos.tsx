@@ -34,6 +34,11 @@ export default function Repos() {
 
 	const { t } = useTranslation();
 
+	const capitalize = (s: string) => {
+		if (typeof s !== "string") return "";
+		return s.charAt(0).toUpperCase() + s.slice(1);
+	};
+
 	// Note: the empty deps array [] means
 	// this useEffect will run once
 	// similar to componentDidMount()
@@ -124,15 +129,17 @@ export default function Repos() {
 								!repo.fork &&
 								(repo.language === activeLang || activeLang === "") && (
 									<div key={repo.id} className="repo-item">
-										<div className="repo-item-title">
-											<a target="_blank" href={repo.html_url}>
-												{repo.name}
+										<div className="repo-item-info">
+											<a target="_blank" href={repo.html_url} className="repo-item-title">
+												{capitalize(repo.name)}
 											</a>
+											<div className="repo-item-language">
+												<LangIcon lang={repo.language} />
+											</div>
 										</div>
-										<div className="repo-item-description">{repo.description}</div>
-										<div className="repo-item-language">
-											<LangIcon lang={repo.language} />
-										</div>
+
+										<div className="repo-item-description">{capitalize(repo.description)}</div>
+
 										<div className="repo-item-stats">
 											<div className="repo-item-stats-item">
 												<span className="repo-item-stats-item-label">{t("Created")}</span>

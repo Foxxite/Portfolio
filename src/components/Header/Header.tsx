@@ -32,10 +32,10 @@ export default function Header() {
 	return (
 		<div className="header">
 			<button title="English" onClick={changeLanguage} value="en">
-				🇬🇧
+				<i className="twa twa-flag-united-kingdom"></i>
 			</button>
 			<button title="Nederlands" onClick={changeLanguage} value="nl">
-				🇳🇱
+				<i className="twa twa-flag-netherlands"></i>
 			</button>
 		</div>
 	);
