@@ -10,14 +10,16 @@ import React, { useEffect, useState } from "react";
 import "./Repos.scss";
 
 import { GithubRepo } from "../../github";
+
 import axios from "axios";
 import moment from "moment";
-import LangIcon from "../LangIcon/LangIcon";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-import { useTranslation } from "react-i18next";
+import LangIcon from "../LangIcon/LangIcon";
 
+import { useTranslation } from "react-i18next";
 import "../../i18n/config";
 
 export default function Repos() {
