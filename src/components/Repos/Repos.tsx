@@ -21,6 +21,7 @@ import LangIcon from "../LangIcon/LangIcon";
 
 import { useTranslation } from "react-i18next";
 import "../../i18n/config";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 
 export default function Repos() {
 	const [error, setError] = useState(null);
@@ -125,56 +126,82 @@ export default function Repos() {
 					</div>
 
 					<div className="repo-container">
-						{repos.map(
-							(repo: GithubRepo) =>
-								// Ignore if the repo is forked or if the language filter doesn't match
-								!repo.fork &&
-								(repo.language === activeLang || activeLang === "") && (
-									<div key={repo.id} className="repo-item">
-										<div className="repo-item-info">
-											<a target="_blank" href={repo.html_url} className="repo-item-title">
-												{capitalize(repo.name)}
-											</a>
-											<div className="repo-item-language">
-												<LangIcon lang={repo.language} />
-											</div>
-										</div>
-
-										<div className="repo-item-description">{capitalize(repo.description)}</div>
-
-										<div className="repo-item-stats">
-											<div className="repo-item-stats-item">
-												<span className="repo-item-stats-item-label">{t("Created")}</span>
-												<span className="repo-item-stats-item-value">
-													{
-														// Use moment to format the date to local time notation
-														moment(repo.created_at).format("LLL")
-													}
-												</span>
-											</div>
-
-											<div className="repo-item-stats-item">
-												<span className="repo-item-stats-item-label">{t("Stars")}</span>
-												<span className="repo-item-stats-item-value">
-													{repo.stargazers_count}
-												</span>
-											</div>
-
-											<div className="repo-item-stats-item">
-												<span className="repo-item-stats-item-label">{t("Forks")}</span>
-												<span className="repo-item-stats-item-value">{repo.forks_count}</span>
+						<AnimatePresence>
+							{repos.map(
+								(repo: GithubRepo) =>
+									// Ignore if the repo is forked or if the language filter doesn't match
+									!repo.fork &&
+									(repo.language === activeLang || activeLang === "") && (
+										<motion.div
+											key={repo.id}
+											className="repo-item"
+											initial={{
+												scale: 0,
+												opacity: 0,
+												zIndex: 0,
+											}}
+											animate={{
+												scale: 1,
+												opacity: 1,
+												zIndex: 1,
+											}}
+											exit={{
+												scale: 0,
+												opacity: 0,
+												zIndex: 0,
+											}}
+											transition={{
+												ease: "easeInOut",
+											}}>
+											<div className="repo-item-info">
+												<a target="_blank" href={repo.html_url} className="repo-item-title">
+													{capitalize(repo.name)}
+												</a>
+												<div className="repo-item-language">
+													<LangIcon lang={repo.language} />
+												</div>
 											</div>
 
-											<div className="repo-item-stats-item">
-												<span className="repo-item-stats-item-label">{t("Watchers")}</span>
-												<span className="repo-item-stats-item-value">
-													{repo.watchers_count}
-												</span>
+											<div className="repo-item-description">{capitalize(repo.description)}</div>
+
+											<div className="repo-item-stats">
+												<div className="repo-item-stats-item">
+													<span className="repo-item-stats-item-label">{t("Created")}</span>
+													<span className="repo-item-stats-item-value">
+														{
+															// Use moment to format the date to local time notation
+															moment(repo.created_at).format("LL")
+														}
+														{", "}
+														{moment(repo.created_at).fromNow()}
+													</span>
+												</div>
+
+												<div className="repo-item-stats-item">
+													<span className="repo-item-stats-item-label">{t("Stars")}</span>
+													<span className="repo-item-stats-item-value">
+														{repo.stargazers_count}
+													</span>
+												</div>
+
+												<div className="repo-item-stats-item">
+													<span className="repo-item-stats-item-label">{t("Forks")}</span>
+													<span className="repo-item-stats-item-value">
+														{repo.forks_count}
+													</span>
+												</div>
+
+												<div className="repo-item-stats-item">
+													<span className="repo-item-stats-item-label">{t("Watchers")}</span>
+													<span className="repo-item-stats-item-value">
+														{repo.watchers_count}
+													</span>
+												</div>
 											</div>
-										</div>
-									</div>
-								)
-						)}
+										</motion.div>
+									)
+							)}
+						</AnimatePresence>
 					</div>
 				</React.Fragment>
 			)}
