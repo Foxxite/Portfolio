@@ -39,15 +39,15 @@ export default function Header() {
 
 	return (
 		<div className="header">
-			<button title="English" onClick={changeLanguage} value="en" className={activeLang == "en" ? "active" : ""}>
-				<i className="twa twa-flag-united-kingdom"></i>
-			</button>
 			<button
 				title="Nederlands"
 				onClick={changeLanguage}
 				value="nl"
 				className={activeLang == "nl" ? "active" : ""}>
 				<i className="twa twa-flag-netherlands"></i>
+			</button>
+			<button title="English" onClick={changeLanguage} value="en" className={activeLang == "en" ? "active" : ""}>
+				<i className="twa twa-flag-united-kingdom"></i>
 			</button>
 		</div>
 	);
