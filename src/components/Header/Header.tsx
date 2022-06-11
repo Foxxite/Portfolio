@@ -6,7 +6,6 @@
  * @format
  */
 
-import moment from "moment";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -37,18 +36,6 @@ export default function Header() {
 		// Set the active language
 		setActiveLang(langCode);
 	}, []);
-
-	const setMomentLocale = (lang: string) => {
-		if (lang === "en") {
-			moment.locale("en-gb");
-		} else {
-			moment.locale("nl");
-		}
-	};
-
-	useEffect(() => {
-		setMomentLocale(activeLang);
-	}, [activeLang]);
 
 	return (
 		<div className="header">

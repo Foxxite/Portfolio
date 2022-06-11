@@ -12,7 +12,6 @@ import "./Repos.scss";
 import { GithubRepo } from "../../github";
 
 import axios from "axios";
-import moment from "moment";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -21,7 +20,10 @@ import LangIcon from "../LangIcon/LangIcon";
 
 import { useTranslation } from "react-i18next";
 import "../../i18n/config";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { compareDesc, format, formatDistanceToNowStrict } from "date-fns";
+import { enGB, nl } from "date-fns/locale";
 
 export default function Repos() {
 	const [error, setError] = useState(null);
@@ -71,7 +73,7 @@ export default function Repos() {
 		const filteredItems = items
 			.filter((item: GithubRepo) => item.fork === false)
 			.sort((a: GithubRepo, b: GithubRepo) => {
-				return moment(b.created_at).diff(moment(a.created_at));
+				return compareDesc(new Date(a.updated_at), new Date(b.updated_at));
 			});
 
 		setRepos(filteredItems);
@@ -168,12 +170,14 @@ export default function Repos() {
 												<div className="repo-item-stats-item">
 													<span className="repo-item-stats-item-label">{t("Created")}</span>
 													<span className="repo-item-stats-item-value">
-														{
-															// Use moment to format the date to local time notation
-															moment(repo.created_at).format("LL")
-														}
+														{format(new Date(repo.created_at), "d LLLL yyyy", {
+															locale: t("locale") == "en" ? enGB : nl,
+														})}
 														{", "}
-														{moment(repo.created_at).fromNow()}
+														{formatDistanceToNowStrict(new Date(repo.created_at), {
+															addSuffix: true,
+															locale: t("locale") == "en" ? enGB : nl,
+														})}
 													</span>
 												</div>
 
