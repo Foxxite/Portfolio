@@ -6,15 +6,41 @@
  * @format
  */
 
-import { useTranslation } from "react-i18next";
-
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
-export default function Testimonials() {
-	const { t } = useTranslation();
+import "./Testimonials.scss";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Testimonial from "./Testimonial";
 
-	const handleDragStart = (e: any) => e.preventDefault();
+export default function Testimonials() {
+	const [testimonials, setTestimonials] = useState([]);
+
+	useEffect(() => {
+		axios.get("/testimonials.json").then((res) => {
+			generateTestimonials(res.data);
+		});
+	}, []);
+
+	function generateTestimonials(data: any) {
+		const testimonials = data.map((testimonial: any) => {
+			console.log(testimonial);
+
+			return (
+				<Testimonial
+					enText={testimonial.text.en}
+					nlText={testimonial.text.nl}
+					author={testimonial.author}
+					onDragStart={(e) => {
+						e.preventDefault();
+					}}
+				/>
+			);
+		});
+
+		setTestimonials(testimonials);
+	}
 
 	const responsive = {
 		0: { items: 1 },
@@ -22,28 +48,10 @@ export default function Testimonials() {
 		1024: { items: 3 },
 	};
 
-	const items = [
-		<div className="item" data-value="1">
-			1
-		</div>,
-		<div className="item" data-value="2">
-			2
-		</div>,
-		<div className="item" data-value="3">
-			3
-		</div>,
-		<div className="item" data-value="4">
-			4
-		</div>,
-		<div className="item" data-value="5">
-			5
-		</div>,
-	];
-
 	return (
 		<AliceCarousel
 			mouseTracking
-			items={items}
+			items={testimonials}
 			responsive={responsive}
 			controlsStrategy="alternate"
 			infinite={true}
