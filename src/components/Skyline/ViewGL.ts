@@ -14,13 +14,15 @@ import * as SkylineData from "./data.json";
 export default class ViewGL {
 	scene: THREE.Scene;
 	renderer: THREE.WebGLRenderer;
-	camera: THREE.Camera;
+	camera: THREE.PerspectiveCamera;
 	controls: OrbitControls;
 
 	center: THREE.Vector3 = new THREE.Vector3(0.7 / 2, 0, 52 / 10 / 2);
 
 	minColor = 0x161b22;
 	maxColor = 0x39d353;
+
+	plane: THREE.Mesh<THREE.BoxGeometry, THREE.MeshNormalMaterial>;
 
 	raycaster = new THREE.Raycaster();
 	pointer = new THREE.Vector2();
@@ -85,17 +87,15 @@ export default class ViewGL {
 			});
 		});
 
-		console.log(this.meshMetadata);
-
 		// Create a plane to cover the entire screen
 		const planeGeometry = new THREE.BoxGeometry(0.8, 0.1, weeks / 10 + 0.1);
 		const planeMaterial = new THREE.MeshNormalMaterial();
-		const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+		this.plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
-		plane.position.set(this.center.x - 0.05, this.center.y - 0.05, this.center.z);
-		plane.receiveShadow = true;
+		this.plane.position.set(this.center.x - 0.05, this.center.y - 0.05, this.center.z);
+		this.plane.receiveShadow = true;
 
-		this.scene.add(plane);
+		this.scene.add(this.plane);
 
 		// Make sure the camera is centered on the scene
 		this.camera.position.x = weeks / 10 / 2;
@@ -137,6 +137,9 @@ export default class ViewGL {
 	}
 
 	onWindowResize(vpW: number, vpH: number) {
+		this.camera.aspect = vpW / vpH;
+		this.camera.updateProjectionMatrix();
+
 		this.renderer.setSize(vpW, vpH);
 	}
 

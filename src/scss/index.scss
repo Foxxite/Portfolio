@@ -57,7 +57,9 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-button {
+button,
+.btn,
+.button {
 	cursor: pointer;
 
 	border: none;
@@ -91,16 +93,4 @@ button {
 // Fix so that language buttons work
 .twa {
 	pointer-events: none;
-}
-
-.header {
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 9999;
-
-	display: flex;
-	flex-direction: column;
-
-	width: fit-content;
 }

@@ -10,7 +10,11 @@ import { faCss3, faHtml5, faJava, faJs, faPhp, faPython, IconDefinition } from "
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { useTranslation } from "react-i18next";
+
 export default function LangIcon(props: { lang: string }) {
+	const { t } = useTranslation();
+
 	let { lang } = props;
 	if (!lang) {
 		lang = "unknown";
@@ -29,12 +33,18 @@ export default function LangIcon(props: { lang: string }) {
 
 	const langIcon: IconDefinition | null = langMap[lang.toLowerCase()];
 
+	let langText = lang;
+
+	if (langText == "unknown") {
+		langText = t("unknown");
+	}
+
 	if (!langIcon) {
-		return <span title={lang}>{Capitalize(lang)}</span>;
+		return <span title={lang}>{Capitalize(langText)}</span>;
 	} else {
 		return (
 			<span title={lang}>
-				<FontAwesomeIcon icon={langIcon} /> {Capitalize(lang)}
+				<FontAwesomeIcon icon={langIcon} /> {Capitalize(langText)}
 			</span>
 		);
 	}

@@ -9,5 +9,12 @@
 	"Created": "Gemaakt",
 	"Stars": "Sterren",
 	"Forks": "Forks",
-	"Watchers": "Watchers"
+	"Watchers": "Watchers",
+	"unknown": "Onbekend",
+
+	"__Site": "",
+	"who_am_i": "Over mij",
+	"repos": "Github",
+	"showcase": "Showcase",
+	"testimonials": "Getuigenissen"
 }

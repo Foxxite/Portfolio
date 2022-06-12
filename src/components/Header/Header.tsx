@@ -6,13 +6,19 @@
  * @format
  */
 
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import "./Header.scss";
+
 export default function Header() {
 	const { i18n } = useTranslation();
+	const { t } = useTranslation();
 
 	const [activeLang, setActiveLang] = useState("");
+	const [showMenu, setShowMenu] = useState(false);
 
 	function changeLanguage(e: any) {
 		i18n.changeLanguage(e.target.value);
@@ -26,8 +32,6 @@ export default function Header() {
 		// split the language into two parts
 		const langParts = lang.split("-");
 
-		console.log(langParts);
-
 		const langCode = langParts[0];
 
 		// Set the language to the browser language
@@ -39,16 +43,39 @@ export default function Header() {
 
 	return (
 		<div className="header">
-			<button
-				title="Nederlands"
-				onClick={changeLanguage}
-				value="nl"
-				className={activeLang == "nl" ? "active" : ""}>
-				<i className="twa twa-flag-netherlands"></i>
+			<button id="menu-toggle" title="Toggle Menu" onClick={() => setShowMenu(!showMenu)}>
+				<FontAwesomeIcon icon={faBars} />
 			</button>
-			<button title="English" onClick={changeLanguage} value="en" className={activeLang == "en" ? "active" : ""}>
-				<i className="twa twa-flag-united-kingdom"></i>
-			</button>
+
+			<div className={`menu ${showMenu ? "show" : ""}`}>
+				<a className="button" href="#intro">
+					{t("who_am_i")}
+				</a>
+				<a className="button" href="#repos">
+					{t("repos")}
+				</a>
+				<a className="button" href="#showcase">
+					{t("showcase")}
+				</a>
+				<a className="button" href="#testimonials">
+					{t("testimonials")}
+				</a>
+
+				<button
+					title="Nederlands"
+					onClick={changeLanguage}
+					value="nl"
+					className={activeLang == "nl" ? "active" : ""}>
+					<i className="twa twa-flag-netherlands"></i>
+				</button>
+				<button
+					title="English"
+					onClick={changeLanguage}
+					value="en"
+					className={activeLang == "en" ? "active" : ""}>
+					<i className="twa twa-flag-united-kingdom"></i>
+				</button>
+			</div>
 		</div>
 	);
 }

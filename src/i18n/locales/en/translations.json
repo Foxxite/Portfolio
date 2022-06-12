@@ -9,5 +9,12 @@
 	"Created": "Created",
 	"Stars": "Stars",
 	"Forks": "Forks",
-	"Watchers": "Watchers"
+	"Watchers": "Watchers",
+	"unknown": "unknown",
+
+	"__Site": "",
+	"who_am_i": "About me",
+	"repos": "Github",
+	"showcase": "Showcase",
+	"testimonials": "Testimonials"
 }

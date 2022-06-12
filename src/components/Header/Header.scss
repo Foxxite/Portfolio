@@ -1,0 +1,52 @@
+/**
+ * /*
+ *   Copyright (c) 2022 Foxxite | Articca
+ *   All rights reserved.
+ *
+ * @format
+ */
+
+@import "../../scss/colors.scss";
+@import "../../scss/breakpoints.scss";
+
+.header {
+	position: fixed;
+	top: 1vh;
+	right: 1vh;
+	z-index: 9999;
+}
+
+.header,
+.header .menu {
+	display: flex;
+	flex-direction: column;
+
+	.menu {
+		display: none;
+	}
+
+	.menu.show {
+		display: flex;
+	}
+
+	@include md {
+		#menu-toggle {
+			display: none;
+		}
+
+		.menu {
+			display: flex;
+		}
+
+		flex-direction: row;
+	}
+
+	width: fit-content;
+
+	a {
+		text-align: center;
+
+		text-decoration: none;
+		text-transform: capitalize;
+	}
+}

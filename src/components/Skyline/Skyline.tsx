@@ -62,7 +62,17 @@ export default class Skyline extends React.Component<SkylineProps, SkylineState>
 	};
 
 	handleResize = () => {
-		this.viewGL?.onWindowResize(this.canvasRef.current!.clientWidth, this.canvasRef.current!.clientHeight);
+		if (!this.canvasRef.current) return;
+
+		let newWidth = window.innerWidth - window.innerWidth * 0.05;
+		let newHeight = window.innerHeight;
+
+		if (window.innerWidth > 768) {
+			newWidth = window.innerWidth / 2;
+			newHeight = window.innerHeight / 2;
+		}
+
+		this.viewGL?.onWindowResize(newWidth, newHeight);
 	};
 
 	onPointerMove = (event: PointerEvent) => {
@@ -73,7 +83,7 @@ export default class Skyline extends React.Component<SkylineProps, SkylineState>
 		return (
 			<div className="skyline">
 				{/* <p>{this.state.metadata}</p> */}
-				<canvas width={window.innerWidth / 2} height={window.innerHeight / 2} ref={this.canvasRef} />
+				<canvas ref={this.canvasRef} />
 			</div>
 		);
 	}

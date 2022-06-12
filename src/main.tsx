@@ -14,6 +14,7 @@ import "./scss/index.scss";
 
 const Repos = lazy(() => import("./components/Repos/Repos"));
 const Skyline = lazy(() => import("./components/Skyline/Skyline"));
+const Testimonials = lazy(() => import("./components/Testimonials/Testimonials"));
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
@@ -21,5 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 		<Skyline />
 		<Repos />
+
+		<Testimonials />
 	</React.StrictMode>
 );

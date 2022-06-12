@@ -48,25 +48,33 @@ export default function Repos() {
 	// this useEffect will run once
 	// similar to componentDidMount()
 	useEffect(() => {
-		// replace the fetch with axios
 		axios
 			.get("https://api.github.com/users/foxxite/repos")
 			.then(function (response) {
-				setIsLoaded(true);
-				setItems(response.data);
+				getOtherRepos(response.data);
 			})
 			.catch(function (error) {
-				setIsLoaded(true);
 				setError(error);
 
 				// Load the fallback.json
 				axios.get("/fallback.json").then(function (response) {
-					setIsLoaded(true);
 					setFromFallback(true);
-					setItems(response.data);
+					console.log("Fallback loaded");
+					getOtherRepos(response.data);
 				});
 			});
 	}, []);
+
+	function getOtherRepos(fromGithub: []) {
+		// Fetch other repos that I worked on
+		axios.get("/extra_repos.json").then(function (response) {
+			setTimeout(() => {
+				const newItems = fromGithub.concat(response.data);
+				setItems(newItems);
+				setIsLoaded(true);
+			}, 1000);
+		});
+	}
 
 	useEffect(() => {
 		// Filter the items to not include forked repos, and sort by date
