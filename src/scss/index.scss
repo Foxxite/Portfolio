@@ -40,6 +40,7 @@
 
 body {
 	margin: 0;
+	padding: 1vw;
 	font-family: "Nunito", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -67,7 +68,7 @@ button {
 	box-shadow: $shadow;
 
 	padding: 0.5em;
-	margin: 0.2em 0.2em 0;
+	margin: 0.2em 0.4em 0.2em 0;
 
 	font-size: 1em;
 

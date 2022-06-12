@@ -6,9 +6,13 @@
  * @format
  */
 
+@import "../../scss/colors.scss";
+
 .skyline canvas {
 	width: 50vw;
 	height: 50vh;
 
 	cursor: move;
+
+	filter: drop-shadow(0 0 0.5rem rgba($color: $secondary, $alpha: 0.5));
 }

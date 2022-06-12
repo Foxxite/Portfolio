@@ -72,8 +72,8 @@ export default class Skyline extends React.Component<SkylineProps, SkylineState>
 	render() {
 		return (
 			<div className="skyline">
-				<p>{this.state.metadata}</p>
-				<canvas ref={this.canvasRef} />
+				{/* <p>{this.state.metadata}</p> */}
+				<canvas width={window.innerWidth / 2} height={window.innerHeight / 2} ref={this.canvasRef} />
 			</div>
 		);
 	}

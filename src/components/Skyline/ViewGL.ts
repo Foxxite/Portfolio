@@ -88,11 +88,11 @@ export default class ViewGL {
 		console.log(this.meshMetadata);
 
 		// Create a plane to cover the entire screen
-		const planeGeometry = new THREE.BoxGeometry(0.8, 0.01, weeks / 10 + 0.1);
+		const planeGeometry = new THREE.BoxGeometry(0.8, 0.1, weeks / 10 + 0.1);
 		const planeMaterial = new THREE.MeshNormalMaterial();
 		const plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
-		plane.position.set(this.center.x - 0.05, this.center.y - 0.005, this.center.z);
+		plane.position.set(this.center.x - 0.05, this.center.y - 0.05, this.center.z);
 		plane.receiveShadow = true;
 
 		this.scene.add(plane);
@@ -142,12 +142,7 @@ export default class ViewGL {
 
 	// ******************* RENDER LOOP ******************* //
 	update(t: number) {
-		// update the picking ray with the camera and pointer position
-		this.raycaster.setFromCamera(this.pointer, this.camera);
-
-		// calculate objects intersecting the picking ray
-		const intersects = this.raycaster.intersectObjects(this.scene.children);
-
+		/*
 		// Reset the color of all cubes
 		this.scene.children.forEach((child) => {
 			const metadata = this.meshMetadata[child.uuid];
@@ -159,6 +154,12 @@ export default class ViewGL {
 				mesh.material.color.set(metadata.color);
 			}
 		});
+
+		// update the picking ray with the camera and pointer position
+		this.raycaster.setFromCamera(this.pointer, this.camera);
+
+		// calculate objects intersecting the picking ray
+		const intersects = this.raycaster.intersectObjects(this.scene.children);
 
 		if (intersects.length) {
 			const intersect = intersects[0];
@@ -178,6 +179,7 @@ export default class ViewGL {
 				`);
 			}
 		}
+		*/
 
 		this.controls.update();
 		this.renderer.render(this.scene, this.camera);
@@ -187,7 +189,7 @@ export default class ViewGL {
 
 	onPointerMove(event: PointerEvent) {
 		// calculate pointer position in normalized coordinates for the canvas element
-		this.pointer.x = (event.clientX / this.canvasRef.clientWidth) * 2 - 1;
-		this.pointer.y = -(event.clientY / this.canvasRef.clientHeight) * 2 + 1;
+		this.pointer.x = (event.clientX / this.renderer.domElement.clientWidth) * 2 - 1;
+		this.pointer.y = -(event.clientY / this.renderer.domElement.clientHeight) * 2 + 1;
 	}
 }
