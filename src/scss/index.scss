@@ -38,14 +38,17 @@
 	border: 0px solid #ffffff;
 }
 
+html,
+body {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
-	padding: 1vw;
+	padding: 2vw;
 	font-family: "Nunito", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-
-	scroll-behavior: smooth;
 
 	background-color: $background;
 	color: $text;

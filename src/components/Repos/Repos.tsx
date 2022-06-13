@@ -99,9 +99,9 @@ export default function Repos() {
 
 	return (
 		<React.Fragment>
-			<h1>
+			<h2>
 				<FontAwesomeIcon icon={faGithub} /> Repositories: {isLoaded ? repos.length : "Loading..."}
-			</h1>
+			</h2>
 
 			{error && <div>Error: {(error as any).message}</div>}
 
