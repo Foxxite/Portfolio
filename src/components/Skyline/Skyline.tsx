@@ -83,6 +83,10 @@ export default class Skyline extends React.Component<SkylineProps, SkylineState>
 		return (
 			<div className="skyline">
 				{/* <p>{this.state.metadata}</p> */}
+				<h2>
+					<span className="primary">Foxxite's</span>&nbsp;
+					<span className="secondary">{new Date().getFullYear() - 1} GitHub Skyline</span>
+				</h2>
 				<canvas ref={this.canvasRef} />
 			</div>
 		);

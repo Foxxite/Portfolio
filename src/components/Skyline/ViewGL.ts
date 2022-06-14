@@ -51,9 +51,9 @@ export default class ViewGL {
 		this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 		this.controls.enableDamping = true;
 		this.controls.dampingFactor = 0.25;
-		this.controls.enableZoom = false;
+		this.controls.enableZoom = true;
 		this.controls.minDistance = 1;
-		this.controls.maxDistance = 3.5;
+		this.controls.maxDistance = 10;
 		this.controls.minPolarAngle = 0.1;
 		this.controls.maxPolarAngle = Math.PI / 2;
 
@@ -97,12 +97,8 @@ export default class ViewGL {
 
 		this.scene.add(this.plane);
 
-		// Make sure the camera is centered on the scene
-		this.camera.position.x = weeks / 10 / 2;
-		this.camera.position.y = 0.5;
-		this.camera.position.z = weeks / 10;
-
 		this.controls.target.set(this.center.x, 0.5, this.center.z);
+		this.camera.position.set(3, 0.5, this.center.z);
 
 		this.update(performance.now());
 	}

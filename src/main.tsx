@@ -20,8 +20,13 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<Header />
 
-		<Skyline />
-		<Repos />
+		<div id="repos">
+			<div className="contributions">
+				<Skyline />
+			</div>
+
+			<Repos />
+		</div>
 
 		<Testimonials />
 	</React.StrictMode>

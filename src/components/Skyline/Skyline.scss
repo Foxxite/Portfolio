@@ -9,20 +9,33 @@
 @import "../../scss/colors.scss";
 @import "../../scss/breakpoints.scss";
 
-.skyline canvas {
-	width: 100%;
-	height: 100vh;
+.skyline {
+	position: relative;
 
-	margin: auto;
+	display: none;
 
 	@include md {
-		width: 50vw;
-		height: 50vh;
-
-		margin: 0;
+		display: block;
 	}
 
-	cursor: move;
+	h2 {
+		position: absolute;
+		top: 15%;
+		left: 50%;
 
-	filter: drop-shadow(0 0 0.5rem rgba($color: $secondary, $alpha: 0.5));
+		transform: translate(-50%, -50%);
+
+		z-index: 1;
+	}
+
+	canvas {
+		width: 100%;
+		height: 50vh;
+
+		margin: auto;
+
+		cursor: move;
+
+		filter: drop-shadow(0 0 0.5rem rgba($color: $secondary, $alpha: 0.5));
+	}
 }

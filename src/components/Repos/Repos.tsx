@@ -9,7 +9,7 @@
 import React, { useEffect, useState } from "react";
 import "./Repos.scss";
 
-import { GithubRepo } from "../../github";
+import { GithubRepo } from "./github";
 
 import axios from "axios";
 
