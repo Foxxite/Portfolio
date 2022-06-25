@@ -9,21 +9,12 @@
 		"url": "https://lemonrp.nl"
 	},
 	{
-		"videoId": "",
-		"title": "",
+		"videoId": "ozd9_gddWYs",
+		"title": "Fusion",
 		"description": {
-			"nl": "",
-			"en": ""
+			"nl": "Fusion is een school project voor Blis Digital om Jira en Simplicate te koppelen om voor hun klanten een overzicht te creeren vna kosten en gemaakte uren per Jira issue.",
+			"en": "Fusion is a school project for Blis Digital to link Jira and Simplicate to create an overview for their customers of costs and hours worked per Jira issue."
 		},
-		"url": ""
-	},
-	{
-		"videoId": "",
-		"title": "",
-		"description": {
-			"nl": "",
-			"en": ""
-		},
-		"url": ""
+		"url": "https://blisdigital.com/"
 	}
 ]
