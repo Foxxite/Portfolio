@@ -1,12 +1,37 @@
 /**
- *
+ * /*
  *   Copyright (c) 2022 Foxxite | Articca
  *   All rights reserved.
  *
  * @format
  */
 
-export interface Owner {
+// Showcase
+export interface IShowcaseDescription {
+	nl: string;
+	en: string;
+}
+
+export interface IShowcase {
+	videoId: string;
+	title: string;
+	description: IShowcaseDescription;
+	url: string;
+}
+
+// Testimonial
+export interface ITestimonialText {
+	en: string;
+	nl: string;
+}
+
+export interface ITestimonial {
+	text: ITestimonialText;
+	author: string;
+}
+
+// Github
+export interface IGithubOwner {
 	login: string;
 	id: number;
 	node_id: string;
@@ -27,7 +52,7 @@ export interface Owner {
 	site_admin: boolean;
 }
 
-export interface License {
+export interface IGithubLicense {
 	key: string;
 	name: string;
 	spdx_id: string;
@@ -35,13 +60,13 @@ export interface License {
 	node_id: string;
 }
 
-export interface GithubRepo {
+export interface IGithubRepo {
 	id: number;
 	node_id: string;
 	name: string;
 	full_name: string;
 	private: boolean;
-	owner: Owner;
+	owner: IGithubOwner;
 	html_url: string;
 	description: string;
 	fork: boolean;
@@ -104,7 +129,7 @@ export interface GithubRepo {
 	archived: boolean;
 	disabled: boolean;
 	open_issues_count: number;
-	license: License;
+	license: IGithubLicense;
 	allow_forking: boolean;
 	is_template: boolean;
 	topics: any[];

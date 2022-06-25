@@ -12,13 +12,20 @@
 .header {
 	position: fixed;
 	top: 1vh;
-	right: 1vh;
+	right: 1vw;
 	z-index: 9999;
+
+	padding: 0.2em;
+
+	background-color: $background;
 }
 
 .header,
 .header .menu {
 	display: flex;
+	justify-items: end;
+	justify-content: end;
+
 	flex-direction: column;
 
 	.menu {

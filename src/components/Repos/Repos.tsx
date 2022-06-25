@@ -9,8 +9,6 @@
 import React, { useEffect, useState } from "react";
 import "./Repos.scss";
 
-import { GithubRepo } from "./github";
-
 import axios from "axios";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,6 +22,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { compareDesc, format, formatDistanceToNowStrict } from "date-fns";
 import { enGB, nl } from "date-fns/locale";
+import { IGithubRepo } from "../../types/types";
 
 export default function Repos() {
 	const [error, setError] = useState(null);
@@ -44,8 +43,8 @@ export default function Repos() {
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	};
 
-	// Note: the empty deps array [] means
-	// this useEffect will run once
+	// Note: the empty array
+	// [] means this useEffect will run once
 	// similar to componentDidMount()
 	useEffect(() => {
 		axios
@@ -79,15 +78,15 @@ export default function Repos() {
 	useEffect(() => {
 		// Filter the items to not include forked repos, and sort by date
 		const filteredItems = items
-			.filter((item: GithubRepo) => item.fork === false)
-			.sort((a: GithubRepo, b: GithubRepo) => {
+			.filter((item: IGithubRepo) => item.fork === false)
+			.sort((a: IGithubRepo, b: IGithubRepo) => {
 				return compareDesc(new Date(a.updated_at), new Date(b.updated_at));
 			});
 
 		setRepos(filteredItems);
 
 		// Get the languages
-		const languages = filteredItems.map((item: GithubRepo) => {
+		const languages = filteredItems.map((item: IGithubRepo) => {
 			return item.language;
 		});
 
@@ -104,8 +103,6 @@ export default function Repos() {
 			</h2>
 
 			{error && <div>Error: {(error as any).message}</div>}
-
-			{!isLoaded && <div>{t("loading")}</div>}
 
 			{fromFallback && <div>{t("loaded_fallback")}</div>}
 
@@ -138,7 +135,7 @@ export default function Repos() {
 					<div className="repo-container">
 						<AnimatePresence>
 							{repos.map(
-								(repo: GithubRepo) =>
+								(repo: IGithubRepo) =>
 									// Ignore if the repo is forked or if the language filter doesn't match
 									!repo.fork &&
 									(repo.language === activeLang || activeLang === "") && (
@@ -214,6 +211,22 @@ export default function Repos() {
 									)
 							)}
 						</AnimatePresence>
+					</div>
+				</React.Fragment>
+			)}
+
+			{!isLoaded && (
+				<React.Fragment>
+					<div className="filter-buttons">
+						{[...Array(5)].map((_, i) => (
+							<div className="skeleton filter-button" key={i}></div>
+						))}
+					</div>
+
+					<div className="repo-container">
+						{[...Array(18)].map((_, i) => (
+							<div className="skeleton repo-item" key={i}></div>
+						))}
 					</div>
 				</React.Fragment>
 			)}

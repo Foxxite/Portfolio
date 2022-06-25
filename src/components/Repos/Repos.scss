@@ -9,6 +9,21 @@
 @import "../../scss/colors.scss";
 @import "../../scss/breakpoints.scss";
 
+.filter-button.skeleton {
+	display: inline-block;
+
+	height: 2em;
+	width: 10ch;
+
+	background-color: $paper;
+	box-shadow: $shadow;
+
+	padding: 0.5em;
+	margin: 0.2em 0.4em 0.2em 0;
+
+	font-size: 1em;
+}
+
 .repo-container {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -38,6 +53,10 @@
 
 		display: flex;
 		flex-direction: column;
+
+		&.skeleton {
+			height: 10em;
+		}
 
 		.repo-item-info {
 			display: flex;
