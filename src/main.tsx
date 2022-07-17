@@ -8,6 +8,8 @@
 
 import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 import Header from "./components/Header/Header";
 import Showcases from "./components/Showcases/Showcases";
 
@@ -21,15 +23,16 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<Header />
 
-		<div id="repos">
-			<div className="contributions">
-				<Skyline />
-			</div>
-
-			<Repos />
+		<div className="about-skyline">
+			<About />
+			<Skyline />
 		</div>
+
+		<Repos />
 
 		<Showcases />
 		<Testimonials />
+
+		<Contact />
 	</React.StrictMode>
 );

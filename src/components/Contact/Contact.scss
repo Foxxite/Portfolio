@@ -1,0 +1,39 @@
+/**
+ * /*
+ *   Copyright (c) 2022 Foxxite | Articca
+ *   All rights reserved.
+ *
+ * @format
+ */
+
+@import "../../scss/colors.scss";
+@import "../../scss/breakpoints.scss";
+
+.contact {
+	.captcha {
+		display: block;
+
+		div {
+			margin: auto;
+			width: fit-content;
+		}
+	}
+
+	.contact-info {
+		text-align: center;
+		margin: auto;
+
+		a {
+			padding: 0.5em;
+			background-color: $paper;
+
+			font-size: 1.25em;
+			color: $text;
+			margin: 0.2em;
+
+			svg {
+				margin-right: 1ch;
+			}
+		}
+	}
+}

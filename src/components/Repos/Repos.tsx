@@ -97,14 +97,14 @@ export default function Repos() {
 	}, [items]);
 
 	return (
-		<React.Fragment>
+		<div id="repos">
 			<h2>
 				<FontAwesomeIcon icon={faGithub} /> Repositories: {isLoaded ? repos.length : "Loading..."}
 			</h2>
 
-			{error && <div>Error: {(error as any).message}</div>}
+			{/* {error && <div>Error: {(error as any).message}</div>} */}
 
-			{fromFallback && <div>{t("loaded_fallback")}</div>}
+			{/* {fromFallback && <div>{t("loaded_fallback")}</div>} */}
 
 			{isLoaded && repos.length > 0 && (
 				<React.Fragment>
@@ -230,6 +230,6 @@ export default function Repos() {
 					</div>
 				</React.Fragment>
 			)}
-		</React.Fragment>
+		</div>
 	);
 }

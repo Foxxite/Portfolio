@@ -16,5 +16,18 @@
 	"who_am_i": "Over mij",
 	"repos": "Github",
 	"showcase": "Uitgelicht",
-	"testimonials": "Getuigenissen"
+	"testimonials": "Getuigenissen",
+	"contact": "Contact",
+
+	"email": "Stuur een email",
+	"linkedin": "Bekijk mijn LinkedIn profiel",
+
+	"about": {
+		"greet": "Hoi, ik ben",
+
+		"description": "Ik ben een web- en softwareontwikkelaar. Ik focus op het bouwen van projecten waar ik trots op kan zijn. Ik ben een fan van clean code en ik ben altijd op bezig om mijn vaardigheden te verbeteren. Ik ben ook een grote fan van de open source community en ben altijd wel bezig met programmeren (zie mijn Github-skyline) en ik probeer altijd nieuwe dingen te leren.",
+
+		"current": "Ik ben afgestudeerd aan het Grafisch Lyceum Rotterdam en studeer momenteel Informatica aan de Hogeschool Rotterdam.",
+		"doing": "Ik ben de hoofdontwikkelaar van Lemon Roleplay, een FiveM roleplay server."
+	}
 }

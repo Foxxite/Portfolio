@@ -48,7 +48,7 @@ export default function Header() {
 			</button>
 
 			<div className={`menu ${showMenu ? "show" : ""}`}>
-				<a className="button" href="#intro">
+				<a className="button" href="#about">
 					{t("who_am_i")}
 				</a>
 				<a className="button" href="#repos">
@@ -59,6 +59,9 @@ export default function Header() {
 				</a>
 				<a className="button" href="#testimonials">
 					{t("testimonials")}
+				</a>
+				<a className="button" href="#contact">
+					{t("contact")}
 				</a>
 
 				<button
