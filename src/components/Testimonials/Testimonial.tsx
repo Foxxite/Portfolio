@@ -6,6 +6,7 @@
  * @format
  */
 
+import { createRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function Testimonial(props: {
@@ -16,10 +17,13 @@ export default function Testimonial(props: {
 }) {
 	const { t } = useTranslation();
 
+	const containerRef = createRef<HTMLDivElement>();
+	const textRef = createRef<HTMLParagraphElement>();
+
 	return (
-		<div className="testimonial" data-value="1" onDragStart={props.onDragStart}>
+		<div ref={containerRef} className="testimonial" data-value="1" onDragStart={props.onDragStart}>
 			<div className="testimonial-text">
-				<p>{t("locale") == "en" ? props.enText : props.nlText}</p>
+				<p ref={textRef}>{t("locale") == "en" ? props.enText : props.nlText}</p>
 			</div>
 			<div className="testimonial-author">
 				<p>{props.author}</p>
