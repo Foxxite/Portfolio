@@ -56,23 +56,29 @@ export default function Repos() {
 				setError(error);
 
 				// Load the fallback.json
-				axios.get("/fallback.json").then(function (response) {
-					setFromFallback(true);
-					console.log("Fallback loaded");
-					getOtherRepos(response.data);
-				});
+				axios
+					.get("/fallback.json")
+					.then(function (response) {
+						setFromFallback(true);
+						console.log("Fallback loaded");
+						getOtherRepos(response.data);
+					})
+					.catch(console.error);
 			});
 	}, []);
 
 	function getOtherRepos(fromGithub: []) {
 		// Fetch other repos that I worked on
-		axios.get("/extra_repos.json").then(function (response) {
-			setTimeout(() => {
-				const newItems = fromGithub.concat(response.data);
-				setItems(newItems);
-				setIsLoaded(true);
-			}, 1000);
-		});
+		axios
+			.get("/extra_repos.json")
+			.then(function (response) {
+				setTimeout(() => {
+					const newItems = fromGithub.concat(response.data);
+					setItems(newItems);
+					setIsLoaded(true);
+				}, 1000);
+			})
+			.catch(console.error);
 	}
 
 	useEffect(() => {
@@ -161,6 +167,7 @@ export default function Repos() {
 												ease: "easeInOut",
 											}}>
 											<div className="repo-item-info">
+												{/* file deepcode ignore DOMXSS: Data source is trusted */}
 												<a target="_blank" href={repo.html_url} className="repo-item-title">
 													{capitalize(repo.name)}
 												</a>
