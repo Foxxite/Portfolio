@@ -1,7 +1,6 @@
 /**
  * /*
- *   Copyright (c) 2022 Foxxite | Articca
- *   All rights reserved.
+ *   https://discourse.threejs.org/t/best-way-to-integrate-plain-three-js-inside-a-react-app/27049/2
  *
  * @format
  */

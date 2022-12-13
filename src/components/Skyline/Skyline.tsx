@@ -1,7 +1,6 @@
 /**
  * /*
- *   Copyright (c) 2022 Foxxite | Articca
- *   All rights reserved.
+ *   https://discourse.threejs.org/t/best-way-to-integrate-plain-three-js-inside-a-react-app/27049/2
  *
  * @format
  */
@@ -82,7 +81,6 @@ export default class Skyline extends React.Component<SkylineProps, SkylineState>
 	render() {
 		return (
 			<div className="skyline">
-				{/* <p>{this.state.metadata}</p> */}
 				<h2>
 					<span className="primary">Foxxite's</span>&nbsp;
 					<span className="secondary">{new Date().getFullYear() - 1} GitHub Skyline</span>
