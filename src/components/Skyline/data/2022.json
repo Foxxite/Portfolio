@@ -1,0 +1,637 @@
+{
+	"username": "Foxxite",
+	"year": "2022",
+	"min": 1,
+	"max": 54,
+	"median": 7,
+	"p80": 13,
+	"p90": 16,
+	"p99": 33.5,
+	"contributions": [
+		{ "week": 0, "days": [{ "count": 3 }] },
+		{
+			"week": 1,
+			"days": [
+				{ "count": 5 },
+				{ "count": 10 },
+				{ "count": 13 },
+				{ "count": 17 },
+				{ "count": 4 },
+				{ "count": 7 },
+				{ "count": 20 }
+			]
+		},
+		{
+			"week": 2,
+			"days": [
+				{ "count": 0 },
+				{ "count": 9 },
+				{ "count": 9 },
+				{ "count": 1 },
+				{ "count": 2 },
+				{ "count": 4 },
+				{ "count": 8 }
+			]
+		},
+		{
+			"week": 3,
+			"days": [
+				{ "count": 6 },
+				{ "count": 7 },
+				{ "count": 6 },
+				{ "count": 4 },
+				{ "count": 49 },
+				{ "count": 30 },
+				{ "count": 18 }
+			]
+		},
+		{
+			"week": 4,
+			"days": [
+				{ "count": 32 },
+				{ "count": 15 },
+				{ "count": 4 },
+				{ "count": 0 },
+				{ "count": 2 },
+				{ "count": 13 },
+				{ "count": 12 }
+			]
+		},
+		{
+			"week": 5,
+			"days": [
+				{ "count": 4 },
+				{ "count": 1 },
+				{ "count": 4 },
+				{ "count": 8 },
+				{ "count": 20 },
+				{ "count": 46 },
+				{ "count": 24 }
+			]
+		},
+		{
+			"week": 6,
+			"days": [
+				{ "count": 25 },
+				{ "count": 3 },
+				{ "count": 13 },
+				{ "count": 4 },
+				{ "count": 0 },
+				{ "count": 9 },
+				{ "count": 3 }
+			]
+		},
+		{
+			"week": 7,
+			"days": [
+				{ "count": 2 },
+				{ "count": 3 },
+				{ "count": 6 },
+				{ "count": 1 },
+				{ "count": 1 },
+				{ "count": 6 },
+				{ "count": 12 }
+			]
+		},
+		{
+			"week": 8,
+			"days": [
+				{ "count": 2 },
+				{ "count": 4 },
+				{ "count": 5 },
+				{ "count": 1 },
+				{ "count": 4 },
+				{ "count": 6 },
+				{ "count": 6 }
+			]
+		},
+		{
+			"week": 9,
+			"days": [
+				{ "count": 8 },
+				{ "count": 10 },
+				{ "count": 8 },
+				{ "count": 9 },
+				{ "count": 8 },
+				{ "count": 16 },
+				{ "count": 8 }
+			]
+		},
+		{
+			"week": 10,
+			"days": [
+				{ "count": 11 },
+				{ "count": 7 },
+				{ "count": 9 },
+				{ "count": 13 },
+				{ "count": 13 },
+				{ "count": 17 },
+				{ "count": 5 }
+			]
+		},
+		{
+			"week": 11,
+			"days": [
+				{ "count": 10 },
+				{ "count": 6 },
+				{ "count": 4 },
+				{ "count": 2 },
+				{ "count": 7 },
+				{ "count": 27 },
+				{ "count": 2 }
+			]
+		},
+		{
+			"week": 12,
+			"days": [
+				{ "count": 10 },
+				{ "count": 12 },
+				{ "count": 10 },
+				{ "count": 4 },
+				{ "count": 15 },
+				{ "count": 8 },
+				{ "count": 2 }
+			]
+		},
+		{
+			"week": 13,
+			"days": [
+				{ "count": 1 },
+				{ "count": 5 },
+				{ "count": 18 },
+				{ "count": 10 },
+				{ "count": 19 },
+				{ "count": 22 },
+				{ "count": 16 }
+			]
+		},
+		{
+			"week": 14,
+			"days": [
+				{ "count": 24 },
+				{ "count": 11 },
+				{ "count": 12 },
+				{ "count": 9 },
+				{ "count": 12 },
+				{ "count": 2 },
+				{ "count": 0 }
+			]
+		},
+		{
+			"week": 15,
+			"days": [
+				{ "count": 6 },
+				{ "count": 3 },
+				{ "count": 4 },
+				{ "count": 0 },
+				{ "count": 0 },
+				{ "count": 8 },
+				{ "count": 5 }
+			]
+		},
+		{
+			"week": 16,
+			"days": [
+				{ "count": 35 },
+				{ "count": 15 },
+				{ "count": 13 },
+				{ "count": 7 },
+				{ "count": 8 },
+				{ "count": 0 },
+				{ "count": 8 }
+			]
+		},
+		{
+			"week": 17,
+			"days": [
+				{ "count": 2 },
+				{ "count": 1 },
+				{ "count": 4 },
+				{ "count": 18 },
+				{ "count": 13 },
+				{ "count": 3 },
+				{ "count": 11 }
+			]
+		},
+		{
+			"week": 18,
+			"days": [
+				{ "count": 11 },
+				{ "count": 0 },
+				{ "count": 0 },
+				{ "count": 0 },
+				{ "count": 1 },
+				{ "count": 0 },
+				{ "count": 6 }
+			]
+		},
+		{
+			"week": 19,
+			"days": [
+				{ "count": 6 },
+				{ "count": 2 },
+				{ "count": 4 },
+				{ "count": 7 },
+				{ "count": 7 },
+				{ "count": 14 },
+				{ "count": 4 }
+			]
+		},
+		{
+			"week": 20,
+			"days": [
+				{ "count": 5 },
+				{ "count": 0 },
+				{ "count": 3 },
+				{ "count": 1 },
+				{ "count": 4 },
+				{ "count": 9 },
+				{ "count": 11 }
+			]
+		},
+		{
+			"week": 21,
+			"days": [
+				{ "count": 4 },
+				{ "count": 0 },
+				{ "count": 6 },
+				{ "count": 6 },
+				{ "count": 3 },
+				{ "count": 11 },
+				{ "count": 6 }
+			]
+		},
+		{
+			"week": 22,
+			"days": [
+				{ "count": 1 },
+				{ "count": 4 },
+				{ "count": 1 },
+				{ "count": 6 },
+				{ "count": 9 },
+				{ "count": 3 },
+				{ "count": 12 }
+			]
+		},
+		{
+			"week": 23,
+			"days": [
+				{ "count": 10 },
+				{ "count": 9 },
+				{ "count": 6 },
+				{ "count": 7 },
+				{ "count": 4 },
+				{ "count": 5 },
+				{ "count": 9 }
+			]
+		},
+		{
+			"week": 24,
+			"days": [
+				{ "count": 5 },
+				{ "count": 1 },
+				{ "count": 9 },
+				{ "count": 0 },
+				{ "count": 5 },
+				{ "count": 7 },
+				{ "count": 10 }
+			]
+		},
+		{
+			"week": 25,
+			"days": [
+				{ "count": 14 },
+				{ "count": 4 },
+				{ "count": 4 },
+				{ "count": 4 },
+				{ "count": 0 },
+				{ "count": 1 },
+				{ "count": 6 }
+			]
+		},
+		{
+			"week": 26,
+			"days": [
+				{ "count": 15 },
+				{ "count": 3 },
+				{ "count": 15 },
+				{ "count": 2 },
+				{ "count": 24 },
+				{ "count": 24 },
+				{ "count": 23 }
+			]
+		},
+		{
+			"week": 27,
+			"days": [
+				{ "count": 17 },
+				{ "count": 16 },
+				{ "count": 10 },
+				{ "count": 11 },
+				{ "count": 6 },
+				{ "count": 8 },
+				{ "count": 3 }
+			]
+		},
+		{
+			"week": 28,
+			"days": [
+				{ "count": 7 },
+				{ "count": 6 },
+				{ "count": 9 },
+				{ "count": 9 },
+				{ "count": 1 },
+				{ "count": 8 },
+				{ "count": 5 }
+			]
+		},
+		{
+			"week": 29,
+			"days": [
+				{ "count": 19 },
+				{ "count": 0 },
+				{ "count": 0 },
+				{ "count": 2 },
+				{ "count": 2 },
+				{ "count": 14 },
+				{ "count": 6 }
+			]
+		},
+		{
+			"week": 30,
+			"days": [
+				{ "count": 6 },
+				{ "count": 7 },
+				{ "count": 12 },
+				{ "count": 3 },
+				{ "count": 11 },
+				{ "count": 9 },
+				{ "count": 12 }
+			]
+		},
+		{
+			"week": 31,
+			"days": [
+				{ "count": 9 },
+				{ "count": 17 },
+				{ "count": 12 },
+				{ "count": 11 },
+				{ "count": 11 },
+				{ "count": 10 },
+				{ "count": 14 }
+			]
+		},
+		{
+			"week": 32,
+			"days": [
+				{ "count": 13 },
+				{ "count": 22 },
+				{ "count": 3 },
+				{ "count": 15 },
+				{ "count": 14 },
+				{ "count": 7 },
+				{ "count": 5 }
+			]
+		},
+		{
+			"week": 33,
+			"days": [
+				{ "count": 9 },
+				{ "count": 6 },
+				{ "count": 0 },
+				{ "count": 3 },
+				{ "count": 2 },
+				{ "count": 4 },
+				{ "count": 0 }
+			]
+		},
+		{
+			"week": 34,
+			"days": [
+				{ "count": 7 },
+				{ "count": 1 },
+				{ "count": 3 },
+				{ "count": 1 },
+				{ "count": 2 },
+				{ "count": 5 },
+				{ "count": 12 }
+			]
+		},
+		{
+			"week": 35,
+			"days": [
+				{ "count": 8 },
+				{ "count": 6 },
+				{ "count": 11 },
+				{ "count": 0 },
+				{ "count": 7 },
+				{ "count": 9 },
+				{ "count": 15 }
+			]
+		},
+		{
+			"week": 36,
+			"days": [
+				{ "count": 7 },
+				{ "count": 8 },
+				{ "count": 12 },
+				{ "count": 13 },
+				{ "count": 16 },
+				{ "count": 21 },
+				{ "count": 13 }
+			]
+		},
+		{
+			"week": 37,
+			"days": [
+				{ "count": 10 },
+				{ "count": 3 },
+				{ "count": 7 },
+				{ "count": 4 },
+				{ "count": 2 },
+				{ "count": 12 },
+				{ "count": 5 }
+			]
+		},
+		{
+			"week": 38,
+			"days": [
+				{ "count": 11 },
+				{ "count": 1 },
+				{ "count": 5 },
+				{ "count": 5 },
+				{ "count": 6 },
+				{ "count": 1 },
+				{ "count": 2 }
+			]
+		},
+		{
+			"week": 39,
+			"days": [
+				{ "count": 7 },
+				{ "count": 4 },
+				{ "count": 0 },
+				{ "count": 13 },
+				{ "count": 54 },
+				{ "count": 13 },
+				{ "count": 24 }
+			]
+		},
+		{
+			"week": 40,
+			"days": [
+				{ "count": 16 },
+				{ "count": 5 },
+				{ "count": 4 },
+				{ "count": 6 },
+				{ "count": 3 },
+				{ "count": 8 },
+				{ "count": 3 }
+			]
+		},
+		{
+			"week": 41,
+			"days": [
+				{ "count": 12 },
+				{ "count": 6 },
+				{ "count": 11 },
+				{ "count": 10 },
+				{ "count": 3 },
+				{ "count": 5 },
+				{ "count": 7 }
+			]
+		},
+		{
+			"week": 42,
+			"days": [
+				{ "count": 0 },
+				{ "count": 2 },
+				{ "count": 6 },
+				{ "count": 2 },
+				{ "count": 8 },
+				{ "count": 3 },
+				{ "count": 8 }
+			]
+		},
+		{
+			"week": 43,
+			"days": [
+				{ "count": 7 },
+				{ "count": 3 },
+				{ "count": 8 },
+				{ "count": 6 },
+				{ "count": 2 },
+				{ "count": 8 },
+				{ "count": 24 }
+			]
+		},
+		{
+			"week": 44,
+			"days": [
+				{ "count": 11 },
+				{ "count": 7 },
+				{ "count": 9 },
+				{ "count": 17 },
+				{ "count": 15 },
+				{ "count": 6 },
+				{ "count": 12 }
+			]
+		},
+		{
+			"week": 45,
+			"days": [
+				{ "count": 11 },
+				{ "count": 0 },
+				{ "count": 13 },
+				{ "count": 1 },
+				{ "count": 17 },
+				{ "count": 9 },
+				{ "count": 15 }
+			]
+		},
+		{
+			"week": 46,
+			"days": [
+				{ "count": 10 },
+				{ "count": 10 },
+				{ "count": 1 },
+				{ "count": 7 },
+				{ "count": 14 },
+				{ "count": 11 },
+				{ "count": 1 }
+			]
+		},
+		{
+			"week": 47,
+			"days": [
+				{ "count": 1 },
+				{ "count": 7 },
+				{ "count": 14 },
+				{ "count": 10 },
+				{ "count": 6 },
+				{ "count": 4 },
+				{ "count": 6 }
+			]
+		},
+		{
+			"week": 48,
+			"days": [
+				{ "count": 7 },
+				{ "count": 15 },
+				{ "count": 19 },
+				{ "count": 11 },
+				{ "count": 1 },
+				{ "count": 14 },
+				{ "count": 14 }
+			]
+		},
+		{
+			"week": 49,
+			"days": [
+				{ "count": 11 },
+				{ "count": 2 },
+				{ "count": 10 },
+				{ "count": 15 },
+				{ "count": 3 },
+				{ "count": 0 },
+				{ "count": 5 }
+			]
+		},
+		{
+			"week": 50,
+			"days": [
+				{ "count": 5 },
+				{ "count": 5 },
+				{ "count": 3 },
+				{ "count": 13 },
+				{ "count": 4 },
+				{ "count": 2 },
+				{ "count": 1 }
+			]
+		},
+		{
+			"week": 51,
+			"days": [
+				{ "count": 8 },
+				{ "count": 13 },
+				{ "count": 10 },
+				{ "count": 2 },
+				{ "count": 6 },
+				{ "count": 3 },
+				{ "count": 9 }
+			]
+		},
+		{
+			"week": 52,
+			"days": [
+				{ "count": 0 },
+				{ "count": 10 },
+				{ "count": 0 },
+				{ "count": 2 },
+				{ "count": 2 },
+				{ "count": 10 },
+				{ "count": 4 }
+			]
+		}
+	]
+}

@@ -8,7 +8,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-import * as SkylineData from "./data.json";
+import * as SkylineData from "./data/2022.json";
 
 export default class ViewGL {
 	scene: THREE.Scene;
