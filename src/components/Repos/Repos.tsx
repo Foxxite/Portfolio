@@ -43,9 +43,6 @@ export default function Repos() {
 		return s.charAt(0).toUpperCase() + s.slice(1);
 	};
 
-	// Note: the empty array
-	// [] means this useEffect will run once
-	// similar to componentDidMount()
 	useEffect(() => {
 		axios
 			.get("https://api.github.com/users/foxxite/repos")
@@ -68,7 +65,7 @@ export default function Repos() {
 	}, []);
 
 	function getOtherRepos(fromGithub: []) {
-		// Fetch other repos that I worked on
+		// Fetch other repos that I've worked on
 		axios
 			.get("/extra_repos.json")
 			.then(function (response) {
@@ -86,7 +83,7 @@ export default function Repos() {
 		const filteredItems = items
 			.filter((item: IGithubRepo) => item.fork === false)
 			.sort((a: IGithubRepo, b: IGithubRepo) => {
-				return compareDesc(new Date(a.updated_at), new Date(b.updated_at));
+				return compareDesc(new Date(a.created_at), new Date(b.created_at));
 			});
 
 		setRepos(filteredItems);
@@ -107,10 +104,6 @@ export default function Repos() {
 			<h2>
 				<FontAwesomeIcon icon={faGithub} /> Repositories: {isLoaded ? repos.length : "Loading..."}
 			</h2>
-
-			{/* {error && <div>Error: {(error as any).message}</div>} */}
-
-			{/* {fromFallback && <div>{t("loaded_fallback")}</div>} */}
 
 			{isLoaded && repos.length > 0 && (
 				<React.Fragment>
