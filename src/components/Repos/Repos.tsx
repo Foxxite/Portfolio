@@ -54,7 +54,7 @@ export default function Repos() {
 
 				// Load the fallback.json
 				axios
-					.get("/fallback.json")
+					.get("/assets/data/fallback.json")
 					.then(function (response) {
 						setFromFallback(true);
 						console.log("Fallback loaded");
@@ -67,7 +67,7 @@ export default function Repos() {
 	function getOtherRepos(fromGithub: []) {
 		// Fetch other repos that I've worked on
 		axios
-			.get("/extra_repos.json")
+			.get("/assets/data/extra_repos.json")
 			.then(function (response) {
 				setTimeout(() => {
 					const newItems = fromGithub.concat(response.data);

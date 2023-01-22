@@ -25,7 +25,7 @@ export default function Testimonials() {
 	const [testimonials, setTestimonials] = useState([]);
 
 	useEffect(() => {
-		axios.get("/testimonials.json").then((res) => {
+		axios.get("/assets/data/testimonials.json").then((res) => {
 			generateTestimonials(res.data);
 		});
 	}, []);

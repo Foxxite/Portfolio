@@ -24,7 +24,7 @@ export default function Showcases() {
 	const [showcases, setShowcases] = useState([]);
 
 	useEffect(() => {
-		axios.get("/showcase.json").then((res) => {
+		axios.get("/assets/data/showcase.json").then((res) => {
 			generateShowcases(res.data);
 		});
 	}, []);
