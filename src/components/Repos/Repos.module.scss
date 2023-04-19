@@ -9,6 +9,10 @@
 @import "../../scss/colors.scss";
 @import "../../scss/breakpoints.scss";
 
+.skeleton {
+	animation: skeleton 1s infinite ease-in-out alternate;
+}
+
 .filter-button {
 	&.skeleton {
 		display: inline-block;
@@ -117,5 +121,17 @@
 				}
 			}
 		}
+	}
+}
+
+@keyframes skeleton {
+	0% {
+		background-color: $paper;
+	}
+	50% {
+		background-color: $paperDark;
+	}
+	100% {
+		background-color: $paper;
 	}
 }

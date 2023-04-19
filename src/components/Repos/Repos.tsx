@@ -234,13 +234,13 @@ export default function Repos() {
 				<React.Fragment>
 					<div className="filter-buttons">
 						{[...Array(5)].map((_, i) => (
-							<div className="skeleton filter-button" key={i}></div>
+							<div className={`${styles.skeleton} ${styles["filter-button"]}`} key={i}></div>
 						))}
 					</div>
 
 					<div className={styles["repo-container"]}>
 						{[...Array(18)].map((_, i) => (
-							<div className="skeleton repo-item" key={i}></div>
+							<div className={`${styles.skeleton} ${styles["repo-item"]}`} key={i}></div>
 						))}
 					</div>
 				</React.Fragment>
