@@ -12,9 +12,9 @@ import { useTranslation } from "react-i18next";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-import "./Contact.scss";
+import styles from "./Contact.module.scss";
 import { useState } from "react";
-import React from "react";
+
 import ContactInfo from "./ContactInfo";
 
 export default function Contact() {
@@ -31,14 +31,14 @@ export default function Contact() {
 	}
 
 	return (
-		<div className="contact" id="contact">
+		<div className={styles.contact} id="contact">
 			<h2>
 				<FontAwesomeIcon icon={faAddressBook} /> {t("contact")}
 			</h2>
 
 			{!showForm && (
 				<ReCAPTCHA
-					className="captcha"
+					className={styles.captcha}
 					sitekey="6LdMB6ggAAAAAOtw4riCRmOyNB0thBkH5TOZi2IC"
 					onChange={onChange}
 					onError={onErrorOrExpired}

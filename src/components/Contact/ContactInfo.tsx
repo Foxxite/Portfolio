@@ -19,6 +19,8 @@ import { faAddressBook, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
 
+import styles from "./Contact.module.scss";
+
 export default function ContactInfo() {
 	const { t } = useTranslation();
 
@@ -141,7 +143,7 @@ export default function ContactInfo() {
 		(14).toString(36).toLowerCase();
 
 	return (
-		<div className="contact-info">
+		<div className={styles["contact-info"]}>
 			<a href={m} target="_blank">
 				<FontAwesomeIcon icon={faEnvelope} />
 				<span>{t("email")}</span>

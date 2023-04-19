@@ -8,13 +8,13 @@
 
 import { useTranslation } from "react-i18next";
 
-import "./About.scss";
+import styles from "./About.module.scss";
 
 export default function About() {
 	const { t } = useTranslation();
 
 	return (
-		<div className="about" id="about">
+		<div className={styles.about} id="about">
 			<h1>
 				{t("about.greet")} <span className="primary">Fox</span>
 				<span className="secondary">xite</span>

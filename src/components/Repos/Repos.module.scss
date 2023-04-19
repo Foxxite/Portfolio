@@ -9,19 +9,21 @@
 @import "../../scss/colors.scss";
 @import "../../scss/breakpoints.scss";
 
-.filter-button.skeleton {
-	display: inline-block;
+.filter-button {
+	&.skeleton {
+		display: inline-block;
 
-	height: 2em;
-	width: 10ch;
+		height: 2em;
+		width: 10ch;
 
-	background-color: $paper;
-	box-shadow: $shadow;
+		background-color: $paper;
+		box-shadow: $shadow;
 
-	padding: 0.5em;
-	margin: 0.2em 0.4em 0.2em 0;
+		padding: 0.5em;
+		margin: 0.2em 0.4em 0.2em 0;
 
-	font-size: 1em;
+		font-size: 1em;
+	}
 }
 
 .repo-container {

@@ -7,7 +7,7 @@
  */
 
 import React, { useEffect, useState } from "react";
-import "./Repos.scss";
+import styles from "./Repos.module.scss";
 
 import axios from "axios";
 
@@ -110,7 +110,7 @@ export default function Repos() {
 					<div className="filter-buttons">
 						<button
 							key="all"
-							className={`filter-button ${activeLang == "" ? "active" : ""}`}
+							className={`${styles["filter-button"]} ${activeLang == "" ? "active" : ""}`}
 							onClick={() => setActiveLang("")}>
 							{t("All")}
 						</button>
@@ -120,7 +120,9 @@ export default function Repos() {
 								language && (
 									<button
 										key={language}
-										className={`filter-button ${activeLang == language ? "active" : ""}`}
+										className={`${styles["filter-button"]} ${
+											activeLang == language ? "active" : ""
+										}`}
 										onClick={() => {
 											setActiveLang(language);
 										}}>
@@ -131,7 +133,7 @@ export default function Repos() {
 						})}
 					</div>
 
-					<div className="repo-container">
+					<div className={styles["repo-container"]}>
 						<AnimatePresence>
 							{repos.map(
 								(repo: IGithubRepo) =>
@@ -140,7 +142,7 @@ export default function Repos() {
 									(repo.language === activeLang || activeLang === "") && (
 										<motion.div
 											key={repo.id}
-											className="repo-item"
+											className={styles["repo-item"]}
 											initial={{
 												scale: 0,
 												opacity: 0,
@@ -159,22 +161,29 @@ export default function Repos() {
 											transition={{
 												ease: "easeInOut",
 											}}>
-											<div className="repo-item-info">
+											<div className={styles["repo-item-info"]}>
 												{/* file deepcode ignore DOMXSS: Data source is trusted */}
-												<a target="_blank" href={repo.html_url} className="repo-item-title">
+												<a
+													target="_blank"
+													href={repo.html_url}
+													className={styles["repo-item-title"]}>
 													{capitalize(repo.name)}
 												</a>
-												<div className="repo-item-language">
+												<div className={styles["repo-item-language"]}>
 													<LangIcon lang={repo.language} />
 												</div>
 											</div>
 
-											<div className="repo-item-description">{capitalize(repo.description)}</div>
+											<div className={styles["repo-item-description"]}>
+												{capitalize(repo.description)}
+											</div>
 
-											<div className="repo-item-stats">
-												<div className="repo-item-stats-item">
-													<span className="repo-item-stats-item-label">{t("Created")}</span>
-													<span className="repo-item-stats-item-value">
+											<div className={styles["repo-item-stats"]}>
+												<div className={styles["repo-item-stats-item"]}>
+													<span className={styles["repo-item-stats-item-label"]}>
+														{t("Created")}
+													</span>
+													<span className={styles["repo-item-stats-item-value"]}>
 														{format(new Date(repo.created_at), "d LLLL yyyy", {
 															locale: t("locale") == "en" ? enGB : nl,
 														})}
@@ -186,23 +195,29 @@ export default function Repos() {
 													</span>
 												</div>
 
-												<div className="repo-item-stats-item">
-													<span className="repo-item-stats-item-label">{t("Stars")}</span>
-													<span className="repo-item-stats-item-value">
+												<div className={styles["repo-item-stats-item"]}>
+													<span className={styles["repo-item-stats-item-label"]}>
+														{t("Stars")}
+													</span>
+													<span className={styles["repo-item-stats-item-value"]}>
 														{repo.stargazers_count}
 													</span>
 												</div>
 
-												<div className="repo-item-stats-item">
-													<span className="repo-item-stats-item-label">{t("Forks")}</span>
-													<span className="repo-item-stats-item-value">
+												<div className={styles["repo-item-stats-item"]}>
+													<span className={styles["repo-item-stats-item-label"]}>
+														{t("Forks")}
+													</span>
+													<span className={styles["repo-item-stats-item-value"]}>
 														{repo.forks_count}
 													</span>
 												</div>
 
-												<div className="repo-item-stats-item">
-													<span className="repo-item-stats-item-label">{t("Watchers")}</span>
-													<span className="repo-item-stats-item-value">
+												<div className={styles["repo-item-stats-item"]}>
+													<span className={styles["repo-item-stats-item-label"]}>
+														{t("Watchers")}
+													</span>
+													<span className={styles["repo-item-stats-item-value"]}>
 														{repo.watchers_count}
 													</span>
 												</div>
@@ -223,7 +238,7 @@ export default function Repos() {
 						))}
 					</div>
 
-					<div className="repo-container">
+					<div className={styles["repo-container"]}>
 						{[...Array(18)].map((_, i) => (
 							<div className="skeleton repo-item" key={i}></div>
 						))}

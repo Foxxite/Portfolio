@@ -8,7 +8,7 @@
 import React from "react";
 import ViewGL from "./ViewGL";
 
-import "./Skyline.scss";
+import styles from "./Skyline.module.scss";
 
 type SkylineProps = {};
 
@@ -80,7 +80,7 @@ export default class Skyline extends React.Component<SkylineProps, SkylineState>
 
 	render() {
 		return (
-			<div className="skyline">
+			<div className={styles.skyline}>
 				<h2>
 					<span className="primary">Foxxite's</span>&nbsp;
 					<span className="secondary">{new Date().getFullYear() - 1} GitHub Skyline</span>

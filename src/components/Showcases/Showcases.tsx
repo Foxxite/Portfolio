@@ -6,7 +6,7 @@
  * @format
  */
 
-import classes from "./Showcases.module.scss";
+import styles from "./Showcases.module.scss";
 import Showcase from "./Showcase";
 
 import { useEffect, useState } from "react";
@@ -30,9 +30,10 @@ export default function Showcases() {
 	}, []);
 
 	function generateShowcases(data: any) {
-		const showcases = data.map((showcase: IShowcase) => {
+		const showcases = data.map((showcase: IShowcase, index: number) => {
 			return (
 				<Showcase
+					key={index}
 					title={showcase.title}
 					enText={showcase.description.en}
 					nlText={showcase.description.nl}
@@ -52,7 +53,7 @@ export default function Showcases() {
 				<FontAwesomeIcon icon={faLightbulb} /> {t("showcase")}
 			</h2>
 
-			<div className={classes["showcase-container"]}>
+			<div className={styles["showcase-container"]}>
 				{showcases.map((showcase, index) => {
 					return showcase;
 				})}

@@ -9,7 +9,7 @@
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
-import "./Testimonials.scss";
+import styles from "./Testimonials.module.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Testimonial from "./Testimonial";

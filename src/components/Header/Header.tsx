@@ -11,13 +11,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import "./Header.scss";
+import styles from "./Header.module.scss";
 
 export default function Header() {
 	const { i18n } = useTranslation();
 	const { t } = useTranslation();
 
-	const [activeLang, setActiveLang] = useState("");
+	const [activeLang, setActiveLang] = useState("en");
 	const [showMenu, setShowMenu] = useState(false);
 
 	function changeLanguage(e: any) {
@@ -42,12 +42,12 @@ export default function Header() {
 	}, []);
 
 	return (
-		<div className="header">
-			<button id="menu-toggle" title="Toggle Menu" onClick={() => setShowMenu(!showMenu)}>
+		<div className={styles.header}>
+			<button className={styles["menu-toggle"]} title="Toggle Menu" onClick={() => setShowMenu(!showMenu)}>
 				<FontAwesomeIcon icon={faBars} />
 			</button>
 
-			<div className={`menu ${showMenu ? "show" : ""}`}>
+			<div className={`${styles.menu} ${showMenu ? styles.show : ""}`}>
 				<a className="button" href="#about">
 					{t("who_am_i")}
 				</a>
