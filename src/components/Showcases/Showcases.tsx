@@ -6,7 +6,7 @@
  * @format
  */
 
-import "./Showcases.scss";
+import classes from "./Showcases.module.scss";
 import Showcase from "./Showcase";
 
 import { useEffect, useState } from "react";
@@ -37,6 +37,7 @@ export default function Showcases() {
 					enText={showcase.description.en}
 					nlText={showcase.description.nl}
 					video={showcase.videoId}
+					image={showcase.image}
 					url={showcase.url}
 				/>
 			);
@@ -45,19 +46,13 @@ export default function Showcases() {
 		setShowcases(showcases);
 	}
 
-	const responsive = {
-		0: { items: 1 },
-		576: { items: 2 },
-		1200: { items: 3 },
-	};
-
 	return (
 		<div id="showcase">
 			<h2>
 				<FontAwesomeIcon icon={faLightbulb} /> {t("showcase")}
 			</h2>
 
-			<div className="showcase-container">
+			<div className={classes["showcase-container"]}>
 				{showcases.map((showcase, index) => {
 					return showcase;
 				})}

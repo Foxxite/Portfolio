@@ -13,7 +13,8 @@ export interface IShowcaseDescription {
 }
 
 export interface IShowcase {
-	videoId: string;
+	videoId?: string;
+	image?: string;
 	title: string;
 	description: IShowcaseDescription;
 	url: string;
