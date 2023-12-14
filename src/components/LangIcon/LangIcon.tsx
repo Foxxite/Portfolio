@@ -20,6 +20,10 @@ export default function LangIcon(props: { lang: string }) {
 		lang = "unknown";
 	}
 
+	const Capitalize = (str: string) => {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
 	const langMap: { [Key: string]: IconDefinition } = {
 		javascript: faJs,
 		typescript: faJs,
@@ -47,9 +51,5 @@ export default function LangIcon(props: { lang: string }) {
 				<FontAwesomeIcon icon={langIcon} /> {Capitalize(langText)}
 			</span>
 		);
-	}
-
-	function Capitalize(str: string) {
-		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 }

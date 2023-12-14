@@ -6,40 +6,41 @@
  * @format
  */
 
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import styles from "./Header.module.scss";
+import { usePreferredLanguage } from "@uidotdev/usehooks";
+import { set } from "date-fns";
 
 export default function Header() {
 	const { i18n } = useTranslation();
 	const { t } = useTranslation();
 
+	const prefLanguage = usePreferredLanguage();
+
 	const [activeLang, setActiveLang] = useState("en");
 	const [showMenu, setShowMenu] = useState(false);
 
-	function changeLanguage(e: any) {
-		i18n.changeLanguage(e.target.value);
-		setActiveLang(e.target.value);
-	}
+	const changeLanguage = (lang: string) => {
+		i18n.changeLanguage(lang);
+		setActiveLang(i18n.language);
+	};
 
 	useEffect(() => {
 		// Get the browser language
-		const lang = navigator.language;
+		const lang = prefLanguage;
 
 		// split the language into two parts
 		const langParts = lang.split("-");
 
 		const langCode = langParts[0];
 
-		// Set the language to the browser language
-		i18n.changeLanguage(langCode);
-
-		// Set the active language
-		setActiveLang(langCode);
-	}, []);
+		changeLanguage(langCode);
+	}, [prefLanguage]);
 
 	return (
 		<div className={styles.header}>
@@ -66,14 +67,14 @@ export default function Header() {
 
 				<button
 					title="Nederlands"
-					onClick={changeLanguage}
+					onClick={(e) => changeLanguage("nl")}
 					value="nl"
 					className={activeLang == "nl" ? "active" : ""}>
 					<i className="twa twa-flag-netherlands"></i>
 				</button>
 				<button
 					title="English"
-					onClick={changeLanguage}
+					onClick={(e) => changeLanguage("en")}
 					value="en"
 					className={activeLang == "en" ? "active" : ""}>
 					<i className="twa twa-flag-united-kingdom"></i>
