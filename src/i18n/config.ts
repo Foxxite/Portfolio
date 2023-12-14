@@ -8,15 +8,18 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
+import langEN from "./locales/en/translations.json";
+import langNL from "./locales/nl/translations.json";
+
 i18n.use(initReactI18next).init({
 	fallbackLng: "en",
 	lng: "nl",
 	resources: {
 		en: {
-			translations: require("./locales/en/translations.json"),
+			translations: langEN,
 		},
 		nl: {
-			translations: require("./locales/nl/translations.json"),
+			translations: langNL,
 		},
 	},
 	ns: ["translations"],

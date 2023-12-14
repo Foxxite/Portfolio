@@ -6,15 +6,14 @@
  * @format
  */
 
-import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslation } from "react-i18next";
 
-import ReCAPTCHA from "react-google-recaptcha";
+import { faAddressBook } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./Contact.module.scss";
-import { useState } from "react";
-
 import ContactInfo from "./ContactInfo";
 
 export default function Contact() {

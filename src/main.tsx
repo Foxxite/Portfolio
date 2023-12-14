@@ -6,7 +6,7 @@
  * @format
  */
 
-import React, { lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
@@ -25,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 		<div className="about-skyline">
 			<About />
+
 			<Skyline />
 		</div>
 

@@ -15,7 +15,7 @@
  */
 
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faAddressBook, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
 
@@ -148,13 +148,13 @@ export default function ContactInfo() {
 				<FontAwesomeIcon icon={faEnvelope} />
 				<span>{t("email")}</span>
 			</a>
-
+			{/* 
 			{t("locale") == "en" && (
 				<a href={l} target="_blank">
 					<FontAwesomeIcon icon={faLinkedin} />
 					<span>{t("linkedin")}</span>
 				</a>
-			)}
+			)} */}
 		</div>
 	);
 }
