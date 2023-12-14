@@ -22,11 +22,13 @@ export default function Header() {
 
 	const prefLanguage = usePreferredLanguage();
 
-	const [activeLang, setActiveLang] = useState("en");
+	const [activeLang, setActiveLang] = useState(i18n.language);
 	const [showMenu, setShowMenu] = useState(false);
 
 	const changeLanguage = (lang: string) => {
-		i18n.changeLanguage(lang);
+		const newLang = lang == "nl" ? "nl" : "en";
+
+		i18n.changeLanguage(newLang);
 		setActiveLang(i18n.language);
 	};
 
