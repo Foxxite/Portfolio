@@ -1,18 +1,18 @@
 [
 	{
-		"image": "https://nexusrp.nl/assets/img/logo.svg",
-		"title": "Nexus",
+		"image": "https://foxxite.com/nexusrp.nl/assets/img/logo.png",
+		"title": "Nexus (Closed)",
 		"description": {
 			"nl": "Nexus is een Grand Theft Auto V roleplay server gemaakt met het CitizenFX framework (FiveM)",
 			"en": "Nexus is a Grand Theft Auto V roleplay server made with the CitizenFX framework (FiveM)"
 		},
-		"url": "https://nexusrp.nl"
+		"url": "https://foxxite.com/nexusrp.nl"
 	},
 	{
 		"videoId": "ozd9_gddWYs",
 		"title": "Fusion",
 		"description": {
-			"nl": "Fusion is een school project voor Blis Digital om Jira en Simplicate te koppelen om voor hun klanten een overzicht te creeren vna kosten en gemaakte uren per Jira issue.",
+			"nl": "Fusion is een school project voor Blis Digital om Jira en Simplicate te koppelen om voor hun klanten een overzicht te creeren van kosten en gemaakte uren per Jira issue.",
 			"en": "Fusion is a school project for Blis Digital to link Jira and Simplicate to create an overview for their customers of costs and hours worked per Jira issue."
 		},
 		"url": "https://blisdigital.com/"
