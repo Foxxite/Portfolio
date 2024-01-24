@@ -4,13 +4,14 @@
 
 	"__Github": "",
 	"loading": "Laden...",
-	"loaded_fallback": "Geladen vanuit fallback",
+	"loaded_fallback": "Er is een fout opgetreden tijdens het laden van de repositories vanuit GitHub. In plaats daarvan wordt gebruik gemaakt van een fallback. Probeer het later opnieuw. Als dit probleem zich blijft voordoen, neem dan contact met mij op.",
+	"github_error": "Er is een GitHub API-fout opgetreden. Probeer het later opnieuw. Als dit probleem zich blijft voordoen, neem dan contact met mij op.",
+	"extra_error": "Er is een fout opgetreden bij het laden van de extra repository's. Probeer het later opnieuw. Als dit probleem zich blijft voordoen, neem dan contact met mij op.",
 	"All": "Alle",
 	"Created": "Gemaakt",
 	"Stars": "Sterren",
 	"Forks": "Forks",
 	"Watchers": "Watchers",
-	"unknown": "Onbekend",
 
 	"__Site": "",
 	"who_am_i": "Over mij",

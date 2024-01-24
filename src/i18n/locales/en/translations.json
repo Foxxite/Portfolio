@@ -4,13 +4,14 @@
 
 	"__Github": "",
 	"loading": "Loading...",
-	"loaded_fallback": "Loaded from fallback",
+	"loaded_fallback": "An error occurred while loading the repositories from GitHub. A fallback is used instead. Please try again later. If this issue persists, please contact me.",
+	"github_error": "A GitHub API error occurred. Please try again later. If this issue persists, please contact me.",
+	"extra_error": "An error occurred while loading the extra repositories. Please try again later. If this issue persists, please contact me.",
 	"All": "All",
 	"Created": "Created",
 	"Stars": "Stars",
 	"Forks": "Forks",
 	"Watchers": "Watchers",
-	"unknown": "unknown",
 
 	"__Site": "",
 	"who_am_i": "About me",

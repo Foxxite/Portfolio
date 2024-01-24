@@ -27,6 +27,8 @@ export default function Repos() {
 	const [sortedRepos, setSortedRepos] = useState<GithubRepos>([]);
 	const [filteredRepos, setFilteredRepos] = useState<GithubRepos>([]);
 
+	const [fromFallback, setFromFallback] = useState(false);
+
 	const [languages, setLanguages] = useState<string[]>([]);
 	const [activeLang, setActiveLang] = useState("");
 
@@ -39,11 +41,17 @@ export default function Repos() {
 		isError: isRepoError,
 	} = useQuery({
 		queryKey: ["repos"],
-		queryFn: () =>
-			axios
+		queryFn: () => {
+			setFromFallback(false);
+
+			return axios
 				.get("https://api.github.com/users/foxxite/repos")
 				.then((res) => githubReposSchema.parse(res.data))
-				.catch(() => axios.get("/assets/data/fallback.json").then((res) => githubReposSchema.parse(res.data))),
+				.catch(() => {
+					setFromFallback(true);
+					return axios.get("/assets/data/fallback.json").then((res) => githubReposSchema.parse(res.data));
+				});
+		},
 	});
 
 	const {
@@ -58,7 +66,18 @@ export default function Repos() {
 
 	useEffect(() => {
 		if (repos && otherRepos) {
-			setAllRepos([...repos, ...otherRepos]);
+			const allRepos = repos;
+
+			// Add the extra repos to the list
+			// Remove duplicates
+
+			otherRepos.forEach((repo: GithubRepo) => {
+				if (!allRepos.find((item: GithubRepo) => item.node_id === repo.node_id)) {
+					allRepos.push(repo);
+				}
+			});
+
+			setAllRepos(allRepos);
 		}
 	}, [repos, otherRepos]);
 
@@ -99,11 +118,15 @@ export default function Repos() {
 				<FontAwesomeIcon icon={faGithub} /> Repositories: {allRepos.length > 0 ? allRepos.length : "Loading..."}
 			</h2>
 
+			{fromFallback && (
+				<div className={styles["error-message"]}>
+					<p>{t("loaded_fallback")}</p>
+				</div>
+			)}
+
 			{isRepoError && (
 				<div className={styles["error-message"]}>
-					<p>
-						A GitHub API error occurred. Please try again later. If this issue persists, please contact me.
-					</p>
+					<p>{t("github_error")}</p>
 					<pre>
 						{JSON.stringify(
 							{
@@ -118,10 +141,7 @@ export default function Repos() {
 
 			{isOtherRepoError && (
 				<div className={styles["error-message"]}>
-					<p>
-						An error occurred while loading the extra repositories. Please try again later. If this issue
-						persists, please contact me.
-					</p>
+					<p>{t("extra_error")}</p>
 					<pre>
 						{JSON.stringify(
 							{
