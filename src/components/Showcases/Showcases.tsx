@@ -19,6 +19,7 @@ import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import { IShowcase } from "../../types/types";
 import { useQuery } from "@tanstack/react-query";
 import Skeleton from "../Skeleton/Skeleton";
+import { showcasesSchema } from "../../schemas/showcaseSchema";
 
 export default function Showcases() {
 	const { t } = useTranslation();
@@ -31,31 +32,9 @@ export default function Showcases() {
 	} = useQuery({
 		queryKey: ["showcases"],
 		queryFn: () => {
-			return axios.get("/assets/data/showcase.json").then((res) => res.data);
+			return axios.get("/assets/data/showcase.json").then((res) => showcasesSchema.parse(res.data));
 		},
 	});
-
-	useEffect(() => {
-		axios.get("/assets/data/showcase.json").then((res) => {
-			generateShowcases(res.data);
-		});
-	}, []);
-
-	function generateShowcases(data: any) {
-		const showcases = data.map((showcase: IShowcase, index: number) => {
-			return (
-				<Showcase
-					key={index}
-					title={showcase.title}
-					enText={showcase.description.en}
-					nlText={showcase.description.nl}
-					video={showcase.videoId}
-					image={showcase.image}
-					url={showcase.url}
-				/>
-			);
-		});
-	}
 
 	return (
 		<div id="showcase">
@@ -65,7 +44,7 @@ export default function Showcases() {
 
 			<div className={styles["showcase-container"]}>
 				{isLoadingShowcases &&
-					[...Array(2)].map((_, i) => <Skeleton className={styles["showcase"]} height="20em" />)}
+					[...Array(2)].map((_, i) => <Skeleton key={i} className={styles["showcase"]} height="20em" />)}
 
 				{!isLoadingShowcases &&
 					showcases &&

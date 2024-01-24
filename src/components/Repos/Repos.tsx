@@ -225,13 +225,13 @@ export default function Repos() {
 				<>
 					<div className="filter-buttons">
 						{[...Array(5)].map((_, i) => (
-							<Skeleton className={styles["filter-button"]} height="2em" width="5em" />
+							<Skeleton key={i} className={styles["filter-button"]} height="2em" width="5em" />
 						))}
 					</div>
 
 					<div className={styles["repo-container"]}>
 						{[...Array(18)].map((_, i) => (
-							<Skeleton className={styles["repo-item"]} height="10em" width="100%" />
+							<Skeleton key={i} className={styles["repo-item"]} height="10em" width="100%" />
 						))}
 					</div>
 				</>

@@ -6,32 +6,41 @@
  * @format
  */
 
-import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
-import styles from "./Testimonials.module.scss";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import Testimonial from "./Testimonial";
-
+import AliceCarousel from "react-alice-carousel";
 import { useTranslation } from "react-i18next";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useQuery } from "@tanstack/react-query";
+
+import { testimonialsSchema } from "../../schemas/testimonialSchema";
+import type { Testimonials, Testimonial as TTestimonial } from "../../schemas/testimonialSchema";
+
+import Testimonial from "./Testimonial";
+import styles from "./Testimonials.module.scss";
+import Skeleton from "../Skeleton/Skeleton";
 
 export default function Testimonials() {
 	const { t } = useTranslation();
 
-	const [testimonials, setTestimonials] = useState([]);
+	const {
+		data: testimonials,
+		error: testimonialsError,
+		isLoading: isLoadingTestimonials,
+	} = useQuery({
+		queryKey: ["testimonials"],
+		queryFn: () => {
+			return axios
+				.get("/assets/data/testimonials.json")
+				.then((res) => generateTestimonials(testimonialsSchema.parse(res.data)));
+		},
+	});
 
-	useEffect(() => {
-		axios.get("/assets/data/testimonials.json").then((res) => {
-			generateTestimonials(res.data);
-		});
-	}, []);
-
-	function generateTestimonials(data: any) {
-		const testimonials = data.map((testimonial: any) => {
+	function generateTestimonials(data: Testimonials) {
+		return data.map((testimonial: TTestimonial) => {
 			return (
 				<Testimonial
 					enText={testimonial.text.en}
@@ -43,8 +52,6 @@ export default function Testimonials() {
 				/>
 			);
 		});
-
-		setTestimonials(testimonials);
 	}
 
 	const responsive = {
@@ -58,16 +65,33 @@ export default function Testimonials() {
 			<h2>
 				<FontAwesomeIcon icon={faCommentDots} /> {t("testimonials")}
 			</h2>
-			<AliceCarousel
-				// paddingRight={155}
-				mouseTracking
-				items={testimonials}
-				responsive={responsive}
-				controlsStrategy="alternate"
-				infinite={true}
-				autoPlay={false}
-				autoPlayInterval={5000}
-			/>
+
+			{isLoadingTestimonials && (
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+						width: "100%",
+						flexDirection: "row",
+					}}>
+					{[...Array(3)].map((_, i) => (
+						<Skeleton key={i} className={styles.testimonial} width="100%" />
+					))}
+				</div>
+			)}
+
+			{testimonials && testimonials.length > 0 && (
+				<AliceCarousel
+					// paddingRight={155}
+					mouseTracking
+					items={testimonials}
+					responsive={responsive}
+					controlsStrategy="alternate"
+					infinite={true}
+					autoPlay={false}
+					autoPlayInterval={5000}
+				/>
+			)}
 		</div>
 	);
 }
