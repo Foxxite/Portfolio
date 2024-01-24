@@ -15,28 +15,32 @@
 		"@fortawesome/free-regular-svg-icons": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "^6.5.1",
 		"@fortawesome/react-fontawesome": "^0.2.0",
+		"@tanstack/react-query": "^5.17.19",
+		"@tanstack/react-query-devtools": "^5.17.21",
 		"@uidotdev/usehooks": "^2.4.1",
 		"axios": "^1.6.5",
-		"date-fns": "^3.2.0",
-		"framer-motion": "^10.17.12",
-		"i18next": "^23.7.16",
+		"date-fns": "^3.3.1",
+		"framer-motion": "^11.0.3",
+		"i18next": "^23.7.18",
 		"react": "^18.2.0",
 		"react-alice-carousel": "^2.8.0",
 		"react-dom": "^18.2.0",
 		"react-google-recaptcha": "^3.1.0",
-		"react-i18next": "^14.0.0",
+		"react-i18next": "^14.0.1",
 		"react-youtube": "^10.1.0",
-		"sass": "^1.69.7",
-		"three": "^0.160.0"
+		"sass": "^1.70.0",
+		"three": "^0.160.1",
+		"zod": "^3.22.4"
 	},
 	"devDependencies": {
-		"@types/node": "^20.10.8",
-		"@types/react": "^18.2.47",
+		"@tanstack/eslint-plugin-query": "^5.17.20",
+		"@types/node": "^20.11.6",
+		"@types/react": "^18.2.48",
 		"@types/react-dom": "^18.2.18",
-		"@types/react-google-recaptcha": "^2.1.8",
+		"@types/react-google-recaptcha": "^2.1.9",
 		"@types/three": "^0.160.0",
 		"@vitejs/plugin-react": "^4.2.1",
 		"typescript": "^5.3.3",
-		"vite": "^5.0.11"
+		"vite": "^5.0.12"
 	}
 }
