@@ -21,6 +21,7 @@ import { useQuery } from "@tanstack/react-query";
 import { GithubRepo, GithubRepos, githubReposSchema } from "../../schemas/githubRepoSchema";
 import styles from "./Repos.module.scss";
 import Repo from "./Repo";
+import Skeleton from "../Skeleton/Skeleton";
 
 export default function Repos() {
 	const [allRepos, setAllRepos] = useState<GithubRepos>([]);
@@ -224,13 +225,13 @@ export default function Repos() {
 				<>
 					<div className="filter-buttons">
 						{[...Array(5)].map((_, i) => (
-							<div className={`${styles.skeleton} ${styles["filter-button"]}`} key={i}></div>
+							<Skeleton className={styles["filter-button"]} height="2em" width="5em" />
 						))}
 					</div>
 
 					<div className={styles["repo-container"]}>
 						{[...Array(18)].map((_, i) => (
-							<div className={`${styles.skeleton} ${styles["repo-item"]}`} key={i}></div>
+							<Skeleton className={styles["repo-item"]} height="10em" width="100%" />
 						))}
 					</div>
 				</>

@@ -9,27 +9,6 @@
 @import "../../scss/colors.scss";
 @import "../../scss/breakpoints.scss";
 
-.skeleton {
-	animation: skeleton 1s infinite ease-in-out alternate;
-}
-
-.filter-button {
-	&.skeleton {
-		display: inline-block;
-
-		height: 2em;
-		width: 10ch;
-
-		background-color: $paper;
-		box-shadow: $shadow;
-
-		padding: 0.5em;
-		margin: 0.2em 0.4em 0.2em 0;
-
-		font-size: 1em;
-	}
-}
-
 .repo-container {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -124,16 +103,8 @@
 	}
 }
 
-@keyframes skeleton {
-	0% {
-		background-color: $paper;
-	}
-	50% {
-		background-color: $paperDark;
-	}
-	100% {
-		background-color: $paper;
-	}
+.filter-button {
+	margin: 0.2em 0.4em 0.2em 0;
 }
 
 .error-message {

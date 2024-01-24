@@ -1,0 +1,36 @@
+/**
+ * Copyright (c) 2024 Foxxite | Articca
+ *   All rights reserved.
+ *
+ * @format
+ */
+
+@import "../../scss/colors.scss";
+
+.skeleton {
+	display: inline-block;
+
+	animation: skeleton 1s infinite ease-in-out alternate;
+
+	background-color: $paper;
+	box-shadow: $shadow;
+
+	padding: 0.5em;
+
+	height: 1em;
+	width: 3em;
+
+	font-size: 1em;
+}
+
+@keyframes skeleton {
+	0% {
+		background-color: $paper;
+	}
+	50% {
+		background-color: $paperDark;
+	}
+	100% {
+		background-color: $paper;
+	}
+}
