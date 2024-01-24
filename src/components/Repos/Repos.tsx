@@ -6,107 +6,136 @@
  * @format
  */
 
-import React, { useEffect, useState } from "react";
-import styles from "./Repos.module.scss";
+import "../../i18n/config";
 
 import axios from "axios";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-
-import LangIcon from "../LangIcon/LangIcon";
-
-import { useTranslation } from "react-i18next";
-import "../../i18n/config";
+import { compareDesc } from "date-fns";
 import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
-import { compareDesc, format, formatDistanceToNowStrict } from "date-fns";
-import { enGB, nl } from "date-fns/locale";
-import { IGithubRepo } from "../../types/types";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useQuery } from "@tanstack/react-query";
+
+import { GithubRepo, GithubRepos, githubReposSchema } from "../../schemas/githubRepoSchema";
+import styles from "./Repos.module.scss";
+import Repo from "./Repo";
 
 export default function Repos() {
-	const [error, setError] = useState(null);
-	const [isLoaded, setIsLoaded] = useState(false);
-
-	const [items, setItems] = useState([]);
-	const [repos, setRepos] = useState([]);
+	const [allRepos, setAllRepos] = useState<GithubRepos>([]);
+	const [sortedRepos, setSortedRepos] = useState<GithubRepos>([]);
+	const [filteredRepos, setFilteredRepos] = useState<GithubRepos>([]);
 
 	const [languages, setLanguages] = useState<string[]>([]);
 	const [activeLang, setActiveLang] = useState("");
 
-	const [fromFallback, setFromFallback] = useState(false);
-
 	const { t } = useTranslation();
 
-	const capitalize = (s: string) => {
-		if (typeof s !== "string") return "";
-		return s.charAt(0).toUpperCase() + s.slice(1);
-	};
+	const {
+		data: repos,
+		error: repoError,
+		isLoading: isLoadingRepos,
+		isError: isRepoError,
+	} = useQuery({
+		queryKey: ["repos"],
+		queryFn: () =>
+			axios
+				.get("https://api.github.com/users/foxxite/repos")
+				.then((res) => githubReposSchema.parse(res.data))
+				.catch(() => axios.get("/assets/data/fallback.json").then((res) => githubReposSchema.parse(res.data))),
+	});
+
+	const {
+		data: otherRepos,
+		error: otherRepoError,
+		isLoading: isLoadingOtherRepos,
+		isError: isOtherRepoError,
+	} = useQuery({
+		queryKey: ["otherRepos"],
+		queryFn: () => axios.get("/assets/data/extra_repos.json").then((res) => githubReposSchema.parse(res.data)),
+	});
 
 	useEffect(() => {
-		axios
-			.get("https://api.github.com/users/foxxite/repos")
-			.then(function (response) {
-				getOtherRepos(response.data);
-			})
-			.catch(function (error) {
-				setError(error);
-
-				// Load the fallback.json
-				axios
-					.get("/assets/data/fallback.json")
-					.then(function (response) {
-						setFromFallback(true);
-						console.log("Fallback loaded");
-						getOtherRepos(response.data);
-					})
-					.catch(console.error);
-			});
-	}, []);
-
-	function getOtherRepos(fromGithub: []) {
-		// Fetch other repos that I've worked on
-		axios
-			.get("/assets/data/extra_repos.json")
-			.then(function (response) {
-				setTimeout(() => {
-					const newItems = fromGithub.concat(response.data);
-					setItems(newItems);
-					setIsLoaded(true);
-				}, 1000);
-			})
-			.catch(console.error);
-	}
+		if (repos && otherRepos) {
+			setAllRepos([...repos, ...otherRepos]);
+		}
+	}, [repos, otherRepos]);
 
 	useEffect(() => {
 		// Filter the items to not include forked repos, and sort by date
-		const filteredItems = items
-			.filter((item: IGithubRepo) => item.fork === false)
-			.sort((a: IGithubRepo, b: IGithubRepo) => {
+		const filteredItems = allRepos
+			.filter((item: GithubRepo) => item.fork === false)
+			.sort((a: GithubRepo, b: GithubRepo) => {
 				return compareDesc(new Date(a.created_at), new Date(b.created_at));
 			});
 
-		setRepos(filteredItems);
+		setSortedRepos(filteredItems);
 
 		// Get the languages
-		const languages = filteredItems.map((item: IGithubRepo) => {
-			return item.language;
+		const languages = filteredItems.map((item: GithubRepo) => {
+			return item.language || "Unknown";
 		});
 
 		// Remove duplicates
 		const uniqueLanguages = [...new Set(languages)];
 
 		setLanguages(uniqueLanguages);
-	}, [items]);
+	}, [allRepos]);
+
+	useEffect(() => {
+		// Filter the items to not include forked repos, and sort by date
+		const filteredItems = sortedRepos.filter(
+			(item: GithubRepo) =>
+				item.language === activeLang || activeLang === "" || (item.language == null && activeLang == "Unknown")
+		);
+
+		setFilteredRepos(filteredItems);
+	}, [sortedRepos, activeLang]);
 
 	return (
 		<div id="repos">
 			<h2>
-				<FontAwesomeIcon icon={faGithub} /> Repositories: {isLoaded ? repos.length : "Loading..."}
+				<FontAwesomeIcon icon={faGithub} /> Repositories: {allRepos.length > 0 ? allRepos.length : "Loading..."}
 			</h2>
 
-			{isLoaded && repos.length > 0 && (
-				<React.Fragment>
+			{isRepoError && (
+				<div className={styles["error-message"]}>
+					<p>
+						A GitHub API error occurred. Please try again later. If this issue persists, please contact me.
+					</p>
+					<pre>
+						{JSON.stringify(
+							{
+								repoError,
+							},
+							null,
+							2
+						)}
+					</pre>
+				</div>
+			)}
+
+			{isOtherRepoError && (
+				<div className={styles["error-message"]}>
+					<p>
+						An error occurred while loading the extra repositories. Please try again later. If this issue
+						persists, please contact me.
+					</p>
+					<pre>
+						{JSON.stringify(
+							{
+								otherRepoError,
+							},
+							null,
+							2
+						)}
+					</pre>
+				</div>
+			)}
+
+			{sortedRepos && sortedRepos.length > 0 && (
+				<>
 					<div className="filter-buttons">
 						<button
 							key="all"
@@ -132,106 +161,47 @@ export default function Repos() {
 							);
 						})}
 					</div>
-
-					<div className={styles["repo-container"]}>
-						<AnimatePresence>
-							{repos.map(
-								(repo: IGithubRepo) =>
-									// Ignore if the repo is forked or if the language filter doesn't match
-									!repo.fork &&
-									(repo.language === activeLang || activeLang === "") && (
-										<motion.div
-											key={repo.id}
-											className={styles["repo-item"]}
-											initial={{
-												scale: 0,
-												opacity: 0,
-												zIndex: 0,
-											}}
-											animate={{
-												scale: 1,
-												opacity: 1,
-												zIndex: 1,
-											}}
-											exit={{
-												scale: 0,
-												opacity: 0,
-												zIndex: 0,
-											}}
-											transition={{
-												ease: "easeInOut",
-											}}>
-											<div className={styles["repo-item-info"]}>
-												{/* file deepcode ignore DOMXSS: Data source is trusted */}
-												<a
-													target="_blank"
-													href={repo.html_url}
-													className={styles["repo-item-title"]}>
-													{capitalize(repo.name)}
-												</a>
-												<div className={styles["repo-item-language"]}>
-													<LangIcon lang={repo.language} />
-												</div>
-											</div>
-
-											<div className={styles["repo-item-description"]}>
-												{capitalize(repo.description)}
-											</div>
-
-											<div className={styles["repo-item-stats"]}>
-												<div className={styles["repo-item-stats-item"]}>
-													<span className={styles["repo-item-stats-item-label"]}>
-														{t("Created")}
-													</span>
-													<span className={styles["repo-item-stats-item-value"]}>
-														{format(new Date(repo.created_at), "d LLLL yyyy", {
-															locale: t("locale") == "en" ? enGB : nl,
-														})}
-														{", "}
-														{formatDistanceToNowStrict(new Date(repo.created_at), {
-															addSuffix: true,
-															locale: t("locale") == "en" ? enGB : nl,
-														})}
-													</span>
-												</div>
-
-												<div className={styles["repo-item-stats-item"]}>
-													<span className={styles["repo-item-stats-item-label"]}>
-														{t("Stars")}
-													</span>
-													<span className={styles["repo-item-stats-item-value"]}>
-														{repo.stargazers_count}
-													</span>
-												</div>
-
-												<div className={styles["repo-item-stats-item"]}>
-													<span className={styles["repo-item-stats-item-label"]}>
-														{t("Forks")}
-													</span>
-													<span className={styles["repo-item-stats-item-value"]}>
-														{repo.forks_count}
-													</span>
-												</div>
-
-												<div className={styles["repo-item-stats-item"]}>
-													<span className={styles["repo-item-stats-item-label"]}>
-														{t("Watchers")}
-													</span>
-													<span className={styles["repo-item-stats-item-value"]}>
-														{repo.watchers_count}
-													</span>
-												</div>
-											</div>
-										</motion.div>
-									)
-							)}
-						</AnimatePresence>
-					</div>
-				</React.Fragment>
+				</>
 			)}
 
-			{!isLoaded && (
-				<React.Fragment>
+			{filteredRepos && filteredRepos.length > 0 && (
+				<div className={styles["repo-container"]}>
+					<AnimatePresence>
+						{filteredRepos.map(
+							(repo: GithubRepo) =>
+								// Ignore if the repo is forked
+								!repo.fork && (
+									<motion.div
+										key={repo.id}
+										className={styles["repo-item"]}
+										initial={{
+											scale: 0,
+											opacity: 0,
+											zIndex: 0,
+										}}
+										animate={{
+											scale: 1,
+											opacity: 1,
+											zIndex: 1,
+										}}
+										exit={{
+											scale: 0,
+											opacity: 0,
+											zIndex: 0,
+										}}
+										transition={{
+											ease: "easeInOut",
+										}}>
+										<Repo repo={repo} />
+									</motion.div>
+								)
+						)}
+					</AnimatePresence>
+				</div>
+			)}
+
+			{(isLoadingRepos || isLoadingOtherRepos) && (
+				<>
 					<div className="filter-buttons">
 						{[...Array(5)].map((_, i) => (
 							<div className={`${styles.skeleton} ${styles["filter-button"]}`} key={i}></div>
@@ -243,7 +213,7 @@ export default function Repos() {
 							<div className={`${styles.skeleton} ${styles["repo-item"]}`} key={i}></div>
 						))}
 					</div>
-				</React.Fragment>
+				</>
 			)}
 		</div>
 	);
