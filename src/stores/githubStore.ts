@@ -18,6 +18,7 @@ interface GithubStore {
 	repos: Repo[];
 
 	languages: Set<string>;
+	languagesCount: Map<string, number>;
 
 	fetched: boolean;
 
@@ -32,6 +33,7 @@ const useGithubStore = create<GithubStore>((set) => ({
 	repos: [],
 
 	languages: new Set(),
+	languagesCount: new Map(),
 
 	fetched: false,
 
@@ -42,14 +44,14 @@ const useGithubStore = create<GithubStore>((set) => ({
 		// Return if fetched
 		if (useGithubStore.getState().fetched) return;
 
-		const { data } = await octokit.repos.listForUser({
+		const { data: repo_data } = await octokit.repos.listForUser({
 			username: "Foxxite",
 			sort: "created",
 			direction: "desc",
-			per_page: 9999,
+			per_page: 100,
 		});
 
-		const filteredData = data.filter((repo) => !repo.private && !repo.fork && repo.description);
+		const filteredData = repo_data.filter((repo) => !repo.private && !repo.fork && repo.description);
 
 		set({
 			repoCount: filteredData.length,
@@ -57,6 +59,10 @@ const useGithubStore = create<GithubStore>((set) => ({
 			languages: new Set(
 				filteredData.map((repo) => repo.language).filter((language): language is string => !!language)
 			),
+			languagesCount: filteredData
+				.map((repo) => repo.language)
+				.filter((language): language is string => !!language)
+				.reduce((acc, language) => acc.set(language, (acc.get(language) || 0) + 1), new Map<string, number>()),
 			fetched: true,
 		});
 	},
