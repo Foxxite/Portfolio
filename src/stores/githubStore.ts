@@ -68,4 +68,7 @@ const useGithubStore = create<GithubStore>((set) => ({
 	},
 }));
 
+// Call the fetch function to load the data when the store is created
+useGithubStore.getState().fetch();
+
 export default useGithubStore;

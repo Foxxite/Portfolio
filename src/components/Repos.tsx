@@ -15,7 +15,6 @@ import { Badge } from "./ui/badge";
 import GradientText from "./ui/gradient-text";
 import LanguageWithIcon from "./ui/language-with-icon";
 import { format } from "date-fns";
-import { useEffect } from "react";
 import useGithubStore from "@/stores/githubStore";
 
 function Repos() {
@@ -23,10 +22,6 @@ function Repos() {
 	const repoLanguages = Array.from(githubData.languages).sort();
 
 	const languages = ["All", ...repoLanguages];
-
-	useEffect(() => {
-		if (!githubData.fetched) githubData.fetch();
-	}, [githubData]);
 
 	return (
 		<div className="w-full bg-muted/30">
