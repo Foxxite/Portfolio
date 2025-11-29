@@ -16,8 +16,11 @@ import GradientText from "./ui/gradient-text";
 import LanguageWithIcon from "./ui/language-with-icon";
 import { format } from "date-fns";
 import useGithubStore from "@/stores/githubStore";
+import { useTranslation } from "react-i18next";
 
 function Repos() {
+	const { t } = useTranslation();
+
 	const githubData = useGithubStore();
 	const repoLanguages = Array.from(githubData.languages).sort();
 
@@ -28,10 +31,11 @@ function Repos() {
 			<section className="container mx-auto px-4 py-8">
 				<div className="text-center text-balance">
 					<h2 className="text-4xl font-bold mb-4">
-						My <GradientText>GitHub</GradientText> Repositories
+						{t("my")} <GradientText>GitHub</GradientText> {t("repositories")}
 					</h2>
-					<p>I'm a big fan of the open source community and I'm always coding something new.</p>
-					<p>Check out some of my public repositories.</p>
+
+					<p>{t("open-source")}</p>
+					<p>{t("check-out-repos")}</p>
 				</div>
 
 				<Tabs defaultValue="All" className="w-full">
